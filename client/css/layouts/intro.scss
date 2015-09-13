@@ -23,6 +23,7 @@ section.intro {
 				a {
 					display: block;
 					padding: 0.75em;
+					color: black;
 					i {
 						backface-visibility: hidden;
 						transition: transform $transition, color $transition;

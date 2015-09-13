@@ -5,13 +5,19 @@ body {
 	line-height: 1.25em;
 }
 
+a {
+	color: #8896AB;
+	&:hover {
+		color: #C5D5E4;
+	}
+}
+
 .container {
 	height: 100%;
 	position: relative;
 	section {
 		height: 100%;
 		h1 {
-			font-family: $display;
 			font-size: 2em;
 			line-height: 1.25em;
 			text-transform: uppercase;

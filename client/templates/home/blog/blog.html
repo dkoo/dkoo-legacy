@@ -6,5 +6,16 @@
 
 			<p>Some <a href="#">lorem ipsum text</a> should go here.</p>
 		</article>
+
+		{{#each posts}}
+			{{> tinypost}}
+		{{/each}}
+
+		{{#if currentUser}}
+			<div id="toolbar">
+				<a href="/edit" class="new-post">New Post</a>
+				<a href="/" class="logout">Log out</a>
+			</div>
+		{{/if}}
 	</section>
 </template>

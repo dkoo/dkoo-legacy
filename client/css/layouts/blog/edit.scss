@@ -1,0 +1,22 @@
+.edit-post {
+	background-color: #222;
+	box-sizing: border-box;
+	height: 100%;
+	padding: 1.5em;
+	color: white;
+	form {
+		margin: auto;
+		max-width: 600px;
+		h2 {
+			letter-spacing: 0.05em;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		div {
+			&:empty:before {
+				content: attr(data-placeholder);
+				font-style: italic;
+				color: #95D9C3;
+			}
+	}
+}

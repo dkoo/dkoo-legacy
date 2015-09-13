@@ -21,5 +21,7 @@
 
 // main layout styles
 @import "layouts/main";
+@import "layouts/admin";
 @import "layouts/intro";
-@import "layouts/blog";
+@import "layouts/blog/blog";
+@import "layouts/blog/edit";
