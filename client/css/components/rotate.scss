@@ -1,0 +1,47 @@
+.container {
+	perspective: 2500px;
+	transform-style: preserve-3d;
+	transform-origin: 0 0;
+	section {
+		backface-visibility: hidden;
+		box-sizing: border-box;
+		position: relative;
+		transition: transform 0.75s cubic-bezier(0.25, 0.5, 0.5, 0.25);
+		&.intro {
+			background-color: white;
+			transform-origin: 0 100%;
+		}
+		&.blog {
+			transform: rotateX(-90deg);
+			transform-origin: 0 0;
+		}
+		> a.pull {
+			box-sizing: border-box;
+			display: block;
+			font-size: 1.5em;
+			padding: 0.5em;
+			position: absolute;
+			text-align: center;
+			width: 100%;
+			color: #C5D5E4;
+			&:hover {
+				color: #8896AB;
+				font-size: 1.75em;
+			}
+		}
+		&.intro > a.pull {
+			bottom: 0;
+		}
+		&.blog > a.pull {
+			top: 0;
+		}
+	}
+	&.blog {
+		.intro {
+			transform: translateY(-100%) rotateX(90deg);
+		}
+		.blog {
+			transform: rotateX(0deg) translateY(-100%);
+		}
+	}
+}

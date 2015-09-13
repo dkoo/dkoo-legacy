@@ -1,0 +1,55 @@
+section.intro {
+	&::after,
+	div {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	&::after {
+		content: '';
+		height: 100%;
+	}
+	div {
+		text-align: center;
+		width: calc(100% - 0.5em);
+		h1 {
+			font-size: 3em;
+			font-weight: 400;
+			line-height: 1.25em;
+		}
+		ul {
+			li {
+				display: inline-block;
+				font-size: 1.5em;
+				a {
+					display: block;
+					padding: 0.75em;
+					i {
+						backface-visibility: hidden;
+						transition: transform $transition, color $transition;
+					}
+					&:hover {
+						// transform: translateY(-0.25em);
+						i {
+							transform: translateY(-0.125em);
+							&.fa-github {
+								color: #4078c0;
+							}
+							&.fa-instagram {
+								color: #044b7b;
+							}
+							&.fa-twitter {
+								color: #55acee;
+							}
+							&.fa-linkedin {
+								color: #0077b5;
+							}
+							&.fa-envelope-o {
+								color: #8896AB;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
