@@ -1,9 +1,14 @@
 <template name="edit">
-	<main class="edit-post">
-		<form>
-			<h2>New post</h2>
-
-			<div contentEditable class="title" data-placeholder="No title"></div>
-		</form>
-	</main>
+	<form class="edit-post">
+		<h2><pre contentEditable data-name="published" data-placeholder="MM/DD/YYYY"></pre></h2>
+		<h1><pre contentEditable data-name="title" data-placeholder="Post title"></pre></h1>
+		<section class="content">
+			<pre contentEditable data-name="content" data-placeholder="Post content"></pre>
+		</section>
+		
+		{{#if edited}}
+			<button class="save">Save</button>
+		{{/if}}
+		<button class="cancel">Cancel</button>
+	</form>
 </template>

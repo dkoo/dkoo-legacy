@@ -6,7 +6,7 @@
 		backface-visibility: hidden;
 		box-sizing: border-box;
 		position: relative;
-		transition: transform 0.75s cubic-bezier(0.25, 0.5, 0.5, 0.25);
+		transition: transform 0.75s cubic-bezier(0.5, 0.25, 0.25, 0.5), background-color 0.75s cubic-bezier(0.25, 0.5, 0.5, 0.25), color 0.75s cubic-bezier(0.25, 0.5, 0.5, 0.25);
 		&.intro {
 			background-color: white;
 			transform-origin: 0 100%;
@@ -15,7 +15,8 @@
 			transform: rotateX(-90deg);
 			transform-origin: 0 0;
 		}
-		> a.pull {
+		a.pull,
+		a.back {
 			box-sizing: border-box;
 			display: block;
 			font-size: 1.5em;
@@ -29,10 +30,11 @@
 				font-size: 1.75em;
 			}
 		}
-		&.intro > a.pull {
+		&.intro a.pull {
 			bottom: 0;
 		}
-		&.blog > a.pull {
+		&.blog a.pull,
+		&.blog a.back {
 			top: 0;
 		}
 	}

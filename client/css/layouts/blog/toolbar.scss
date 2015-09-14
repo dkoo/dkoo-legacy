@@ -1,0 +1,16 @@
+#toolbar {
+	background-color: #466362;
+	bottom: 0;
+	font-family: $display;
+	font-size: 12px;
+	letter-spacing: 0.05em;
+	position: absolute;
+	right: 0;
+	text-align: right;
+	text-transform: uppercase;
+	width: 100%;
+	a {
+		display: inline-block;
+		padding: 1em;
+	}
+}

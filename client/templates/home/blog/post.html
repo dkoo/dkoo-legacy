@@ -1,0 +1,20 @@
+<!-- full post -->
+<template name="post">
+	<article>
+		{{#if editing}}
+			<a class="back static" href="/blog"><i class="fa fa-angle-double-left"></i></a>
+			{{> edit}}
+		{{else}}
+			<a class="back" href="/blog"><i class="fa fa-angle-double-left"></i></a>
+			<h2>{{date}}</h2>
+			<h1>{{title}}</h1>
+			<section class="content">
+				{{#markdown}}{{content}}{{/markdown}}
+			</section>
+			{{#if currentUser}}
+				<a href="/edit?post={{_id}}" class="action edit">Edit</a>
+				<a href="#" class="action delete">Delete</a>
+			{{/if}}
+		{{/if}}
+	</article>
+</template>

@@ -1,21 +1,22 @@
 <template name="blog">
-	<section class="blog">
-		<a class="pull" href="/"><i class="fa fa-angle-double-up"></i></a>
-		<article>
-			<h1>Hello</h1>
-
-			<p>Some <a href="#">lorem ipsum text</a> should go here.</p>
-		</article>
-
-		{{#each posts}}
-			{{> tinypost}}
-		{{/each}}
+	<section class="blog {{#if currentUser}}logged-in{{/if}} {{#if singlePost}}post{{/if}}">
+		<div class="posts">
+			<a class="pull" href="/"><i class="fa fa-angle-double-up"></i></a>
+			{{#each posts}}
+				{{> tinypost}}
+			{{/each}}
+		</div>
+		<div class="single">
+			{{#if singlePost}}
+				{{> post}}
+			{{/if}}
+		</div>
 
 		{{#if currentUser}}
-			<div id="toolbar">
-				<a href="/edit" class="new-post">New Post</a>
+			<nav id="toolbar">
+				<a href="/edit?post=new" class="new-post">New Post</a>
 				<a href="/" class="logout">Log out</a>
-			</div>
+			</nav>
 		{{/if}}
 	</section>
 </template>

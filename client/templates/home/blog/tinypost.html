@@ -1,8 +1,12 @@
 <!-- post excerpt -->
 <template name="tinypost">
-	<article>
-		<h1>Hello</h1>
-
-		<p>Some <a href="#">lorem ipsum text</a> should go here.</p>
+	<article class="excerpt">
+		<a href="/blog/{{slug}}">
+			<h2>{{date}}</h2>
+			<h1>{{title}}</h1>
+			<section class="content">
+				{{#markdown}}{{excerpt}}{{/markdown}}
+			</section>
+		</a>
 	</article>
 </template>

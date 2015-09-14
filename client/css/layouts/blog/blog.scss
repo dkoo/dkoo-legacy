@@ -1,10 +1,124 @@
 section.blog {
 	background-color: #222;
 	color: white;
-	padding-top: 2.5em;
+	&.logged-in > div {
+		padding-bottom: 3em;
+	}
+	div {
+		backface-visibility: hidden;
+		box-sizing: border-box;
+		max-height: 100%;
+		overflow: scroll;
+		-webkit-overflow-scrolling: touch;
+		transition: background-color 0.5s ease-in-out, transform 0.5s ease-in-out, z-index 0.5s ease-in-out;
+		&.posts {
+			padding-top: 2.5em;
+			position: relative;
+		}
+		&.single {
+			color: #222;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			transform: rotateY(180deg);
+			z-index: -1;
+			article {
+				padding-top: 3em;
+				.content {
+					transition: transform 0.5s ease-in-out;
+					transform: translateY(-1px);
+				}
+			}
+		}
+	}
+	&.post {
+		div.posts {
+			transform: rotateY(180deg);
+			z-index: -1;
+		}
+		div.single {
+			background-color: white;
+			transform: none;
+			z-index: 0;
+			.content {
+				transform: none;
+			}
+		}
+	}
 	article {
 		box-sizing: border-box;
+		margin: auto;
+		max-width: 600px;
 		padding: 1em;
+		position: relative;
+		a.back {
+			padding-left: 0;
+			text-align: left;
+			&.static {
+				pointer-events: none;
+			}
+		}
+		h1 {
+			font-size: 1.5em;
+			letter-spacing: 0.05em;
+			margin-bottom: 0.75em;
+		}
+		h2 {
+			font-size: 12px;
+			font-weight: 400;
+			letter-spacing: 0.05em;
+			text-transform: uppercase;
+		}
+		.content {
+			h1 {
+				font-size: 1em;
+				font-weight: 400;
+				letter-spacing: 0.05em;
+				margin-bottom: 1em;
+				&:not(:first-child) {
+					margin-top: 1.5em;
+				}
+			}
+			h2 {
+				font-weight: 0.75em;
+				letter-spacing: 0.05em;
+				text-transform: uppercase;
+			}
+			ul,
+			ol {
+				margin: 1em 0;
+				padding-left: 1em;
+				li {
+					display: list-item;
+					ul,
+					ol {
+						margin: 0;
+					}
+				}
+			}
+			ul {
+				list-style: disc;
+				ul {
+					list-style: circle;
+				}
+			}
+			ol {
+				list-style: decimal;
+				ol {
+					list-style: lower-roman;
+				}
+			}
+		}
+		.action {
+			display: inline-block;
+			font-family: $display;
+			font-size: 12px;
+			letter-spacing: 0.05em;
+			margin-top: 1em;
+			margin-right: 1em;
+			text-transform: uppercase;
+		}
 	}
 	#toolbar {
 		background-color: #466362;
