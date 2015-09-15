@@ -1,6 +1,6 @@
 Template.blog.helpers({
 	singlePost: function() {
-		var postId = this._id;
+		var postId = this._id || Session.get('editing') === true;
 
 		return postId ? true : false;
 	},

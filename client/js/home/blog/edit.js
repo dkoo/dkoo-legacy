@@ -1,7 +1,10 @@
 Template.edit.onRendered(function() {
 	Session.set('edited', false);
 	var post = Session.get('editing'),
-		data = Template.currentData() || undefined;
+		data = Template.currentData() || undefined,
+		content = document.querySelector('textarea');
+
+	content.style.height = content.scrollHeight + 'px';
 
 	if ( data ) {
 		var fields = document.getElementsByTagName('pre'),
@@ -31,6 +34,13 @@ Template.edit.helpers({
 Template.edit.events({
 	'click .cancel': function(e) {
 		e.preventDefault();
+		if ( Session.get('editing') === true ) {
+			var blog = document.querySelector('section.blog');
+
+			blog.classList.remove('post');
+
+			Router.go('/blog');
+		}
 		Session.set('editing', false);
 	},
 	'focus h2 pre': function(e) {
@@ -48,6 +58,8 @@ Template.edit.events({
 		} else {
 			if ( post && fieldName === 'published' ) {
 				field.textContent = Meteor.utils.prettifyDate(post.published);
+			} else if ( post && fieldName === 'title' ) {
+				field.textContent = post.title;
 			}
 		}
 	},
@@ -65,30 +77,36 @@ Template.edit.events({
 			Session.set('edited', true);
 		}
 	},
+	'keyup textarea': function(e) {
+		input = e.target.value;
+
+		e.target.style.height = e.target.scrollHeight + 'px';
+	},
 	'submit .edit-post': function(e) {
 		e.preventDefault();
 
 		var title = document.querySelector('h1 pre'),
 			published = document.querySelector('h2 pre'),
-			content = document.querySelector('section.content pre'),
-			post = this || undefined,
+			content = document.querySelector('section.content textarea'),
+			post = this._id ? this : { _id: 'new' },
 			input = {
 				title: title.textContent.trim(),
-				content: Meteor.utils.deDiv(content.textContent.trim())
+				content: content.value.trim()
 			};
 
-		if ( Session.get('edit-post') === 'new' ) {
+		if ( post._id === 'new' ) {
 			input.published = new Date();
 		}
 
-		console.log(input.content);
-
-		// Meteor.call('editPost', post._id, input, function(err, response) {
-		// 	if ( err ) {
-		// 		console.log(err);
-		// 	} else {
-		// 		Session.set('editing', false);
-		// 	}
-		// });
+		Meteor.call('editPost', post._id, input, function(err, response) {
+			if ( err ) {
+				console.log(err);
+			} else {
+				if ( Session.get('editing') === true ) {
+					Router.go('/blog/');
+				}
+				Session.set('editing', false);
+			}
+		});
 	}
 });

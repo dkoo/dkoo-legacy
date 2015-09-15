@@ -13,6 +13,7 @@ Meteor.methods({
 				published: input.published
 			});
 		} else {
+			console.log(input.content);
 			return Posts.update(postId, {
 				$set: {
 					title: input.title,

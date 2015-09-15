@@ -3,12 +3,16 @@
 		<h2><pre contentEditable data-name="published" data-placeholder="MM/DD/YYYY"></pre></h2>
 		<h1><pre contentEditable data-name="title" data-placeholder="Post title"></pre></h1>
 		<section class="content">
-			<pre contentEditable data-name="content" data-placeholder="Post content"></pre>
+			<textarea name="content" placeholder="Post content" value="{{#if content}}{{content}}{{/if}}"></textarea>
 		</section>
+
+		<label>Visibility</label>
+		<select name="visibility">
+			<option value="public">Public</option>
+			<option value="private">Private</option>
+		</select>
 		
-		{{#if edited}}
-			<button class="save">Save</button>
-		{{/if}}
+		<button class="save">Save</button>
 		<button class="cancel">Cancel</button>
 	</form>
 </template>

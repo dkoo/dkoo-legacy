@@ -13,6 +13,7 @@ Router.route('/register', function () {
 
 Router.route('/blog', function () {
 	Session.set('viewingBlog', true);
+	Session.set('editing', false);
 	this.render('home');
 });
 
@@ -21,20 +22,16 @@ Router.route('/blog/:slug', function () {
 	Meteor.subscribe('posts');
 	var post = Posts.findOne( { slug: this.params.slug } );
 
-	this.render('home', { data: function() {
-			return post;
-		}
-	});
+	if ( post ) {
+		this.render('home', { data: function() {
+				return post;
+			}
+		});
+	}
 });
 
-Router.route('/edit', function () {
-	var query = this.params.query,
-		post;
-	
-	if ( query.post && query.post !== 'new' ) {
-		Session.set('edit-post', query.post);
-	} else {
-		Session.set('edit-post', 'new');
-	}
-	this.render('edit');
+Router.route('/post/new', function() {
+	Session.set('viewingBlog', true);
+	Session.set('editing', true);
+	this.render('home');
 });
