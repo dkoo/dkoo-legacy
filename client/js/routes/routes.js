@@ -23,6 +23,10 @@ kootroller = RouteController.extend({
 
 		if ( this.params.slug ) {
 			Session.set('singlePost', true);
+			if ( this.params.slug === 'new' ) {
+				Session.set('editing', true);
+			}
+
 			if ( currentPost ) {
 				query = { _id: currentPost };
 			} else {
@@ -67,23 +71,4 @@ Router.route('/blog', { controller: kootroller }, function () {
 	Session.set('subFilters', null);
 });
 
-Router.route('/blog/:slug', { controller: kootroller }, function () {
-	Session.set('viewingBlog', true);
-
-	// get one post with this slug
-	// Meteor.subscribe('posts', filter, { limit: 1 } );
-	// var post = Posts.findOne( { slug: this.params.slug } );
-
-	// if ( post ) {
-	// 	this.render('home', { data: function() {
-	// 			return post;
-	// 		}
-	// 	});
-	// }
-});
-
-Router.route('/post/new', { controller: kootroller }, function() {
-	Session.set('viewingBlog', true);
-	Session.set('editing', true);
-	this.render('home');
-});
+Router.route('/blog/:slug', { controller: kootroller });

@@ -7,16 +7,19 @@
 				{{> edit}}
 			{{else}}
 				<a class="back" href="/blog"><i class="fa fa-angle-double-left"></i></a>
-				<h2>{{#if published}}{{date}}{{/if}}</h2>
-				<h1>{{#if private}}<em>Draft:</em> {{/if}}{{title}}</h1>
-				<section class="content">
-					{{#markdown}}{{content}}{{/markdown}}
-				</section>
-				{{#if currentUser}}
-					<h2><strong>Publish Status:</strong> {{status}}</h2>
-					<a href="/edit?post={{_id}}" class="action edit">Edit</a>
-					<a href="#" class="action delete">Delete</a>
-				{{/if}}
+				<header>
+					<h2>{{#if published}}{{date}}{{/if}}</h2>
+				</header><div>
+					<h1>{{#if private}}<em>Draft:</em> {{/if}}{{title}}</h1>
+					<section class="content">
+						{{#markdown}}{{content}}{{/markdown}}
+					</section>
+					{{#if currentUser}}
+						<h2><strong>Publish Status:</strong> {{status}}</h2>
+						<a href="/edit?post={{_id}}" class="action edit">Edit</a>
+						<a href="#" class="action delete">Delete</a>
+					{{/if}}
+				</div>
 			{{/if}}
 		</article>
 	</div>

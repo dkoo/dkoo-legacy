@@ -13,7 +13,7 @@ section.blog {
 		-webkit-overflow-scrolling: touch;
 		transition: background-color 0.5s ease-in-out, transform 0.5s ease-in-out, z-index 0.5s ease-in-out;
 		&.posts {
-			padding-top: 2.5em;
+			padding-top: 3em;
 			position: relative;
 		}
 		&.single {
@@ -52,12 +52,19 @@ section.blog {
 	article {
 		box-sizing: border-box;
 		margin: auto;
-		max-width: 600px;
+		max-width: 800px;
 		padding: 1em;
 		position: relative;
 		transition: opacity 0.5s ease-in-out;
-		& + article {
+		&.excerpt {
 			border-top: 1px solid #333;
+			a:first-child {
+				display: block;
+				color: white;
+				&:hover {
+					color: #8896AB;
+				}
+			}
 		}
 		a.back {
 			padding-left: 0;
@@ -147,6 +154,30 @@ section.blog {
 		a {
 			display: inline-block;
 			padding: 1em;
+		}
+	}
+}
+
+// desktop styles
+
+@media #{$large} {
+	section.blog {
+		article {
+			header {
+				box-sizing: border-box;
+				display: inline-block;
+				width: 22%;
+				height: 100%;
+				vertical-align: top;
+			}
+			div {
+				box-sizing: border-box;
+				display: inline-block;
+				padding-left: 1em;
+				width: 78%;
+				height: 100%;
+				vertical-align: top;
+			}
 		}
 	}
 }

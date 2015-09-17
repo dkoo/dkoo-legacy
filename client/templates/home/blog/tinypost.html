@@ -2,9 +2,14 @@
 <template name="tinypost">
 	<article class="excerpt">
 		<a name="{{_id}}" href="/blog/{{slug}}">
-			<h2>{{#if published}}{{date}}{{/if}}</h2>
-			<h1>{{#if private}}<em>Draft:</em> {{/if}}{{title}}</h1>
-			{{#markdown}}{{excerpt}}{{/markdown}}
+			<header>
+				{{#if published}}
+					<h2>{{date}}</h2>
+				{{/if}}
+			</header><div>
+				<h1>{{#if private}}<em>Draft:</em> {{/if}}{{title}}</h1>
+				{{#markdown}}{{excerpt}}{{/markdown}}
+			</div>
 		</a>
 		{{#if currentUser}}
 			<a href="/edit?post={{_id}}" class="action edit">Edit</a>

@@ -32,13 +32,21 @@
 		resize: none;
 		transition: opacity 0.5s ease-in-out;
 	}
+	input {
+		display: inline-block;
+		width: auto;
+	}
+	a.add-tag {
+		font-size: 18px;
+		padding: 0.25em 0.5em;
+	}
 	label {
 		display: block;
 		font-family: $display;
 		font-size: 12px;
 		letter-spacing: 0.05em;
 		margin-bottom: 0.25em;
-		margin-top: 1em;
+		margin-top: 1.5em;
 		text-transform: uppercase;
 	}
 	button {

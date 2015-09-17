@@ -8,14 +8,6 @@ Template.tinypost.helpers({
 });
 
 Template.tinypost.events({
-	// 'click .excerpt a': function(e) {
-	// 	e.preventDefault();
-	// 	var postId = e.currentTarget.name;
-
-	// 	Session.set('currentPost', postId);
-
-	// 	Router.go('/blog/' + this.slug);
-	// },
 	'click .edit': function(e) {
 		e.preventDefault();
 		Session.set('editing', this._id);
