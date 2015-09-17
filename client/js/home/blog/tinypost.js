@@ -3,6 +3,29 @@ Template.tinypost.helpers({
 		var array = this.content.split(' '),
 			excerpt = array.slice(0, 50).join(' ') + '&#160;&#8230;';
 
-		return excerpt;
+		return excerpt.length >= 50 ? excerpt : this.content;
+	}
+});
+
+Template.tinypost.events({
+	// 'click .excerpt a': function(e) {
+	// 	e.preventDefault();
+	// 	var postId = e.currentTarget.name;
+
+	// 	Session.set('currentPost', postId);
+
+	// 	Router.go('/blog/' + this.slug);
+	// },
+	'click .edit': function(e) {
+		e.preventDefault();
+		Session.set('editing', this._id);
+		Router.go('/blog/' + this.slug);
+	},
+	'click .delete': function(e) {
+		e.preventDefault();
+		Meteor.call('deletePost', this._id);
+		var blog = document.querySelector('section.blog');
+
+		blog.classList.remove('post');
 	}
 });

@@ -1,16 +1,13 @@
 <template name="blog">
-	<section class="blog {{#if currentUser}}logged-in{{/if}} {{#if singlePost}}post{{/if}}">
+	<section class="blog {{#if singlePost}}post{{/if}}">
 		<div class="posts">
 			<a class="pull" href="/"><i class="fa fa-angle-double-up"></i></a>
 			{{#each posts}}
 				{{> tinypost}}
 			{{/each}}
 		</div>
-		<div class="single">
-			{{#if singlePost}}
-				{{> post}}
-			{{/if}}
-		</div>
+		
+		{{> post}}
 
 		{{#if currentUser}}
 			<nav id="toolbar">

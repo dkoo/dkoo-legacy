@@ -1,20 +1,18 @@
 Template.post.helpers({
 	editing: function() {
 		return Session.get('editing');
+	},
+	thePost: function() {
+		var postId = Session.get('currentPost'),
+			post = Posts.findOne({ _id: postId });
+
+		console.log(post);
+
+		return post;
 	}
 });
 
 Template.post.events({
-	'click .back': function(e) {
-		e.preventDefault();
-
-		var blog = document.querySelector('section.blog');
-
-		blog.classList.remove('post');
-	},
-	'webkitTransitionEnd .content, oTransitionEnd .content, transitionEnd .content, msTransitionEnd .content, transitionend .content': function(e) {
-		Router.go('/blog');
-	},
 	'click .edit': function(e) {
 		e.preventDefault();
 		Session.set('editing', this._id);
@@ -22,8 +20,6 @@ Template.post.events({
 	'click .delete': function(e) {
 		e.preventDefault();
 		Meteor.call('deletePost', this._id);
-		var blog = document.querySelector('section.blog');
-
-		blog.classList.remove('post');
+		Router.go('/blog');
 	}
 });

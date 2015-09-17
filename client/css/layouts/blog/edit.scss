@@ -15,12 +15,22 @@
 		&:empty:before {
 			content: attr(data-placeholder);
 			cursor: text;
-			color: #466362;
+			color: lightgray;
 		}
 		div {
 			margin: 0;
 			padding: 0;
 		}
+	}
+	pre {
+		display: inline-block;
+	}
+	textarea {
+		height: 2.5em;
+		opacity: 0;
+		overflow: hidden;
+		resize: none;
+		transition: opacity 0.5s ease-in-out;
 	}
 	label {
 		display: block;
@@ -34,11 +44,8 @@
 	button {
 		margin-top: 1.5em;
 	}
-	textarea {
-		height: 1.25em;
-		opacity: 0;
-		overflow: hidden;
-		resize: none;
-		transition: opacity 0.5s ease-in-out;
+	#messages {
+		margin-top: 1em;
+		color: indianred;
 	}
 }

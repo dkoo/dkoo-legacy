@@ -1,7 +1,6 @@
 .container {
 	perspective: 2500px;
 	transform-style: preserve-3d;
-	transform-origin: 0 0;
 	section {
 		backface-visibility: hidden;
 		box-sizing: border-box;
@@ -10,6 +9,7 @@
 		&.intro {
 			background-color: white;
 			transform-origin: 0 100%;
+			text-align: center;
 		}
 		&.blog {
 			transform: rotateX(-90deg);

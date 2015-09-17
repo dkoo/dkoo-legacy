@@ -1,15 +1,15 @@
 <template name="edit">
 	<form class="edit-post">
-		<h2><pre contentEditable data-name="published" data-placeholder="MM/DD/YYYY"></pre></h2>
+		<h2><pre contentEditable data-name="published-date" data-placeholder="MM/DD/YYYY"></pre> at <pre contentEditable data-name="published-time" data-placeholder="0:00 am"></pre></h2>
 		<h1><pre contentEditable data-name="title" data-placeholder="Post title"></pre></h1>
 		<section class="content">
 			<textarea name="content" placeholder="Post content" value="{{#if content}}{{content}}{{/if}}"></textarea>
 		</section>
 
-		<label>Visibility</label>
+		<label>Publish Status</label>
 		<select name="visibility">
-			<option value="public">Public</option>
-			<option value="private">Private</option>
+			<option value="public" selected="{{#if statusIs "public"}}true{{/if}}">Published</option>
+			<option value="private" selected="{{#if statusIs "private"}}true{{/if}}">Draft</option>
 		</select>
 		
 		<button class="save">Save</button>

@@ -6,19 +6,14 @@ Meteor.methods({
 		if ( postId === 'new' ) {
 			var slug = Meteor.utils.makeSlug(input.title);
 
-			return Posts.insert({
-				title: input.title,
-				slug: slug,
-				content: input.content,
-				published: input.published
-			});
+			if ( slug ) {
+				input.slug = slug;
+			}
+
+			return Posts.insert(input);
 		} else {
-			console.log(input.content);
 			return Posts.update(postId, {
-				$set: {
-					title: input.title,
-					content: input.content
-				}
+				$set: input
 			});
 		}
 	},

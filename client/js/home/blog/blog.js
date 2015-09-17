@@ -1,13 +1,15 @@
+// Template.blog.onRendered(function() {
+
+// });
+
 Template.blog.helpers({
 	singlePost: function() {
-		var postId = this._id || Session.get('editing') === true;
+		var postId = this._id || Session.get('editing') || Session.get('singlePost');
 
 		return postId ? true : false;
 	},
 	posts: function() {
-		Meteor.subscribe('posts');
-
-		return Posts.find({}, {sort: {published: -1}});
+		return Posts.find({}, { sort: { published: -1 } } );
 	}
 });
 

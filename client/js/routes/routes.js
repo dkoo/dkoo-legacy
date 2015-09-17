@@ -1,3 +1,54 @@
+kootroller = RouteController.extend({
+	onBeforeAction: function() {
+		var filter = Session.get('subFilters') || {},
+			limit = Session.get('subLimit') || 10,
+			options = Session.get('subOptions') || {
+				limit: limit,
+				sort: { published: -1 }
+			},
+			currentPost = Session.get('currentPost'),
+			query,
+			post,
+			data = {};
+
+		if ( !Meteor.user() ) {
+			filter.status = 'public';
+			filter.published = { $lte: Date.now() };
+		}
+
+		Session.set('viewingBlog', true);
+
+		// setup the subscription
+		Meteor.subscribe('posts', filter, options );
+
+		if ( this.params.slug ) {
+			Session.set('singlePost', true);
+			if ( currentPost ) {
+				query = { _id: currentPost };
+			} else {
+				query = { slug: this.params.slug };
+			}
+
+			post = Posts.findOne( query );
+
+			if ( !post ) {
+				Session.set('subFilters', query);
+				post = Posts.findOne( query );
+			}
+
+			data.data = function() {
+				return post;
+			};
+		} else {
+			Session.set('singlePost', false);
+			Session.set('subFilters', false);
+		}
+
+		this.render('home', data);
+	}
+});
+
+
 Router.route('/', function () {
 	Session.set('viewingBlog', false);
 	this.render('home');
@@ -11,26 +62,27 @@ Router.route('/register', function () {
 	this.render('register');
 });
 
-Router.route('/blog', function () {
-	Session.set('viewingBlog', true);
+Router.route('/blog', { controller: kootroller }, function () {
 	Session.set('editing', false);
-	this.render('home');
+	Session.set('subFilters', null);
 });
 
-Router.route('/blog/:slug', function () {
+Router.route('/blog/:slug', { controller: kootroller }, function () {
 	Session.set('viewingBlog', true);
-	Meteor.subscribe('posts');
-	var post = Posts.findOne( { slug: this.params.slug } );
 
-	if ( post ) {
-		this.render('home', { data: function() {
-				return post;
-			}
-		});
-	}
+	// get one post with this slug
+	// Meteor.subscribe('posts', filter, { limit: 1 } );
+	// var post = Posts.findOne( { slug: this.params.slug } );
+
+	// if ( post ) {
+	// 	this.render('home', { data: function() {
+	// 			return post;
+	// 		}
+	// 	});
+	// }
 });
 
-Router.route('/post/new', function() {
+Router.route('/post/new', { controller: kootroller }, function() {
 	Session.set('viewingBlog', true);
 	Session.set('editing', true);
 	this.render('home');

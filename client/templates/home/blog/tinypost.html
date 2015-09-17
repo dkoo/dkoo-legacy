@@ -1,12 +1,14 @@
 <!-- post excerpt -->
 <template name="tinypost">
 	<article class="excerpt">
-		<a href="/blog/{{slug}}">
-			<h2>{{date}}</h2>
-			<h1>{{title}}</h1>
-			<section class="content">
-				{{#markdown}}{{excerpt}}{{/markdown}}
-			</section>
+		<a name="{{_id}}" href="/blog/{{slug}}">
+			<h2>{{#if published}}{{date}}{{/if}}</h2>
+			<h1>{{#if private}}<em>Draft:</em> {{/if}}{{title}}</h1>
+			{{#markdown}}{{excerpt}}{{/markdown}}
 		</a>
+		{{#if currentUser}}
+			<a href="/edit?post={{_id}}" class="action edit">Edit</a>
+			<a href="#" class="action delete">Delete</a>
+		{{/if}}
 	</article>
 </template>

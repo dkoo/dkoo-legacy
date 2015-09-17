@@ -1,7 +1,8 @@
 section.blog {
 	background-color: #222;
+	perspective: 2500px;
 	color: white;
-	&.logged-in > div {
+	& > div {
 		padding-bottom: 3em;
 	}
 	div {
@@ -16,6 +17,7 @@ section.blog {
 			position: relative;
 		}
 		&.single {
+			background-color: #222;
 			color: #222;
 			position: absolute;
 			width: 100%;
@@ -32,7 +34,7 @@ section.blog {
 	}
 	&.post {
 		div.posts {
-			transform: rotateY(180deg);
+			transform: rotateY(-180deg);
 			z-index: -1;
 		}
 		div.single {
@@ -81,6 +83,7 @@ section.blog {
 			}
 		}
 		.content {
+			margin-bottom: 1em;
 			h1 {
 				font-size: 1em;
 				font-weight: 400;
