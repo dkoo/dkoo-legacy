@@ -81,15 +81,27 @@ Meteor.utils = {
 	},
 	makeSlug: function(title) {
 		var arr = title.split(' '),
-			slug = [];
+			slug = [],
+			newSlug,
+			existing;
 
 		for ( var i = 0, len = arr.length; i !== len; i++ ) {
 			if ( arr[i] ) {
+				// remove punctuation, make all words lowercase, join with hyphens
 				slug.push(arr[i].replace(/[^\w\s]|_/g, '').replace(/\s+/g, ' ').toLowerCase());
 			}
 		}
 
-		return slug.join('-');
+		newSlug = slug.join('-');
+
+		existing = Posts.find( { slug: newSlug } );
+
+		// if there's already one or more posts with this slug, increment the slug
+		if ( existing.count() ) {
+			newSlug += '-' + ( existing.count() + 1 );
+		}
+
+		return newSlug;
 	},
 	smartenQuotes: function(text) {
 		return text
@@ -104,5 +116,8 @@ Meteor.utils = {
 			.replace(/(\u2018)([0-9]{2}[^\u2019]*)(\u2018([^0-9]|$)|$|\u2019[a-z])/ig, '\u2019$2$3')	// abbrev. years like '93
 			.replace(/(\B|^)\u2018(?=([^\u2019]*\u2019\b)*([^\u2019\u2018]*\W[\u2019\u2018]\b|[^\u2019\u2018]*$))/ig, '$1\u2019')	// backwards apostrophe
 			.replace(/'/g, '\u2032');
+	},
+	sortArray: function(arr) {
+
 	}
 }

@@ -16,7 +16,11 @@ kootroller = RouteController.extend({
 			filter.published = { $lte: Date.now() };
 		}
 
-		Session.set('viewingBlog', true);
+		if ( this.url === '/' ) {
+			Session.set('viewingBlog', false);
+		} else {
+			Session.set('viewingBlog', true);
+		}
 
 		// setup the subscription
 		Meteor.subscribe('posts', filter, options );
@@ -53,10 +57,7 @@ kootroller = RouteController.extend({
 });
 
 
-Router.route('/', function () {
-	Session.set('viewingBlog', false);
-	this.render('home');
-});
+Router.route('/', { controller: kootroller } );
 
 Router.route('/admin', function () {
 	this.render('admin');

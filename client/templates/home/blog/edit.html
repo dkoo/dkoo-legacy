@@ -8,9 +8,18 @@
 				<textarea name="content" placeholder="Post content" value="{{#if content}}{{content}}{{/if}}"></textarea>
 			</section>
 
-			<label>Tags</label>
-
-			<input class="tags" type="text" name="tags" placeholder="Add tag"><a href="#" class="add-tag">&plus;</a>
+			{{#if tags}}
+				<ul class="tags">
+					{{#each tags}}<li><a href="#" class="remove-tag" title="Remove this tag">{{this}} &times;</a></li>{{/each}}
+				</ul>
+			{{/if}}
+			
+			{{#if newPost}}
+				<textarea class="tags" name="tags" placeholder="Post tags (enter each on own line)"></textarea>
+			{{else}}
+				<label>Add tag</label>
+				<input class="tags" type="text" name="tags" placeholder="Tag"><a href="#" class="add-tag">&plus;</a>
+			{{/if}}
 
 			<label>Publish Status</label>
 			<select name="visibility">

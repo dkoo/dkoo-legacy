@@ -85,6 +85,7 @@ section.blog {
 			text-transform: uppercase;
 		}
 		p {
+			line-height: 1.5em;
 			&:not(:first-child) {
 				margin-top: 1em;
 			}
@@ -107,6 +108,7 @@ section.blog {
 			}
 			ul,
 			ol {
+				line-height: 1.5em;
 				margin: 1em 0;
 				padding-left: 1em;
 				li {
@@ -127,6 +129,20 @@ section.blog {
 				list-style: decimal;
 				ol {
 					list-style: lower-roman;
+				}
+			}
+		}
+		ul.tags {
+			margin: 1em 0;
+			li {
+				display: inline-block;
+				font-family: $display;
+				font-size: 10px;
+				letter-spacing: 0.05em;
+				line-height: 1.25em;
+				text-transform: uppercase;
+				& + li {
+					margin-left: 2em;
 				}
 			}
 		}

@@ -2,7 +2,7 @@ Template.edit.onRendered(function() {
 	Session.set('edited', false);
 	var post = Session.get('editing'),
 		data = Template.currentData() || undefined,
-		content = document.querySelector('textarea');
+		content = document.querySelector('.content textarea');
 
 	content.style.height = content.scrollHeight + 'px';
 
@@ -27,7 +27,7 @@ Template.edit.onRendered(function() {
 
 Template.edit.helpers({
 	newPost: function() {
-		return Session.get('edit-post') === 'new' ? true : false;
+		return !this._id ? true : false;
 	},
 	edited: function() {
 		return Session.get('edited');
@@ -56,7 +56,7 @@ Template.edit.events({
 			fieldName = field.getAttribute('data-name') || field.getAttribute('name'),
 			input;
 
-		if ( fieldName !== 'content' ) {
+		if ( field.tagName.toLowerCase() === 'pre' ) {
 			input = Meteor.utils.smartenQuotes(field.textContent.trim());
 			if ( input ) { 
 				field.textContent = input;
@@ -71,7 +71,7 @@ Template.edit.events({
 	'keypress pre': function(e) {
 		var field = e.target.getAttribute('data-name');
 
-		if ( field === 'title' || field === 'published' ) {
+		if ( field === 'title' || field === 'published-date' || field === 'published-time' ) {
 			if ( e.keyCode === 13 ) {
 				e.preventDefault();
 				Session.set('edited', false);
@@ -85,7 +85,32 @@ Template.edit.events({
 	'keyup textarea': function(e) {
 		input = e.target.value;
 
-		e.target.style.height = e.target.scrollHeight + 'px';
+		if ( !input ) {
+			e.target.style.height = '2.5em';
+		} else {
+			e.target.style.height = e.target.scrollHeight + 'px';
+		}
+	},
+	'click .add-tag, keydown input.tags': function(e) {
+		var field = e.target.value ? e.target : document.querySelector('.tags'),
+			input = field.value;
+
+		if ( e.keyCode === 13 || e.target.tagName === 'A' ) {
+			e.preventDefault();
+
+			if ( input ) {
+				Meteor.call('addTag', this._id, input);
+			}
+
+			field.value = '';
+		}
+	},
+	'click .remove-tag': function(e) {
+		e.preventDefault();
+
+		var doc = Template.currentData();
+
+		Meteor.call('removeTag', doc._id, this.valueOf());
 	},
 	'submit .edit-post': function(e) {
 		e.preventDefault();
@@ -94,6 +119,8 @@ Template.edit.events({
 		var title = document.querySelector('h1 pre'),
 			published = document.querySelectorAll('h2 pre'),
 			content = e.target.content,
+			tags = e.target.tags,
+			tagArr,
 			post = this._id ? this : { _id: 'new' },
 			// get a date number from the entered date and time, if any
 			date = Meteor.utils.getUTC(published[0].textContent.trim(), published[1].textContent.trim()),
@@ -110,6 +137,11 @@ Template.edit.events({
 			if ( post._id === 'new' ) {
 				input.published = Date.now();
 			}
+		}
+
+		if ( tags.value ) {
+			tagArr = tags.value.split('\n');
+			input.tags = tagArr;
 		}
 
 		if ( input.title && input.content ) {

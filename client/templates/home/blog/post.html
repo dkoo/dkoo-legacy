@@ -14,6 +14,13 @@
 					<section class="content">
 						{{#markdown}}{{content}}{{/markdown}}
 					</section>
+
+					{{#if tags}}
+						<ul class="tags">
+							{{#each tags}}<li><a href="#">{{this}}</a></li>{{/each}}
+						</ul>
+					{{/if}}
+
 					{{#if currentUser}}
 						<h2><strong>Publish Status:</strong> {{status}}</h2>
 						<a href="/edit?post={{_id}}" class="action edit">Edit</a>
