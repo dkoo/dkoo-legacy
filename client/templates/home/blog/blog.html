@@ -1,10 +1,15 @@
 <template name="blog">
 	<section class="blog {{#if singlePost}}post{{/if}}">
 		<div class="posts">
-			<a class="pull" href="/"><i class="fa fa-angle-double-up"></i></a>
+			<a class="back" href="/"><i class="fa fa-angle-double-up"></i></a>
+			<a class="search" href="#"><i class="fa {{#if searching}}fa-search-minus{{else}}fa-search{{/if}}"></i></a>
+			{{#if searching}}{{> search}}{{/if}}
+
 			{{#each posts}}
 				{{> tinypost}}
 			{{/each}}
+
+			{{#if more}}<a class="more" href="#">more</a>{{/if}}
 		</div>
 		
 		{{> post}}

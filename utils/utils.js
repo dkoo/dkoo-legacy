@@ -1,19 +1,10 @@
 Meteor.utils = {
-	// identify the correct transitionend event for the current browser
-	getTransitionEndEvent: function () {
-		var t,
-			el = document.documentElement,
-			transitions = {
-				'transition':'transitionend',
-				'OTransition':'oTransitionEnd',
-				'MozTransition':'transitionend',
-				'WebkitTransition':'webkitTransitionEnd'
-			};
-
-		for ( t in transitions ) {
-			if( el.style[t] !== undefined ) {
-				return transitions[t];
-			}
+	// toggle the given Session key
+	sessionToggle: function(key) {
+		if ( Session.get(key) ) {
+			Session.set(key, false);
+		} else {
+			Session.set(key, true);
 		}
 	},
 	// append messages for admin screens

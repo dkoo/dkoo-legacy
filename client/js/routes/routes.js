@@ -9,12 +9,15 @@ kootroller = RouteController.extend({
 			currentPost = Session.get('currentPost'),
 			query,
 			post,
-			data = {};
+			data = {},
+			now = Session.get('now') || Date.now();
 
 		if ( !Meteor.user() ) {
 			filter.status = 'public';
-			filter.published = { $lte: Date.now() };
+			filter.published = { $lte: now };
 		}
+
+		Session.set('searching', false);
 
 		if ( this.url === '/' ) {
 			Session.set('viewingBlog', false);
@@ -73,3 +76,8 @@ Router.route('/blog', { controller: kootroller }, function () {
 });
 
 Router.route('/blog/:slug', { controller: kootroller });
+
+// Router.route('/search', function() {
+// 	Session.set('viewingBlog', true);
+// 	this.render('search');
+// });
