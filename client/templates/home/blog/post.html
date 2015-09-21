@@ -22,6 +22,10 @@
 					{{/if}}
 
 					{{#if currentUser}}
+
+						{{#if excerpt}}<h2><strong>Post Summary:</strong></h2>
+						<section class="content">{{#markdown}}{{excerpt}}{{/markdown}}</section>{{/if}}
+
 						<h2><strong>Publish Status:</strong> {{status}}</h2>
 						<a href="/edit?post={{_id}}" class="action edit">Edit</a>
 						<a href="#" class="action delete">Delete</a>

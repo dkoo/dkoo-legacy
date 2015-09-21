@@ -1,12 +1,4 @@
 Meteor.utils = {
-	// toggle the given Session key
-	sessionToggle: function(key) {
-		if ( Session.get(key) ) {
-			Session.set(key, false);
-		} else {
-			Session.set(key, true);
-		}
-	},
 	// append messages for admin screens
 	appendMessages: function(parent, HTML) {
 		var messages = document.getElementById('messages') || document.createElement('div');
@@ -83,7 +75,7 @@ Meteor.utils = {
 			}
 		}
 
-		newSlug = slug.join('-');
+		newSlug = slug.join('-').replace('--', '-');
 
 		existing = Posts.find( { slug: newSlug } );
 
@@ -107,8 +99,5 @@ Meteor.utils = {
 			.replace(/(\u2018)([0-9]{2}[^\u2019]*)(\u2018([^0-9]|$)|$|\u2019[a-z])/ig, '\u2019$2$3')	// abbrev. years like '93
 			.replace(/(\B|^)\u2018(?=([^\u2019]*\u2019\b)*([^\u2019\u2018]*\W[\u2019\u2018]\b|[^\u2019\u2018]*$))/ig, '$1\u2019')	// backwards apostrophe
 			.replace(/'/g, '\u2032');
-	},
-	sortArray: function(arr) {
-
 	}
 }

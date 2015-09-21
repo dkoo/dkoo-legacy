@@ -1,9 +1,13 @@
 Template.tinypost.helpers({
 	excerpt: function() {
-		var array = this.content.split(' '),
-			excerpt = array.slice(0, 50).join(' ') + '&#160;&#8230;';
+		if ( this.excerpt ) {
+			return this.excerpt;
+		} else {
+			var array = this.content.split(' '),
+				excerpt = array.slice(0, 50).join(' ') + '&#160;&#8230;';
 
-		return excerpt.length >= 50 ? excerpt : this.content;
+			return array.length >= 50 ? excerpt : this.content;
+		}
 	}
 });
 

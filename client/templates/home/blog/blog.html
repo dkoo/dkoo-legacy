@@ -5,9 +5,15 @@
 			<a class="search" href="#"><i class="fa {{#if searching}}fa-search-minus{{else}}fa-search{{/if}}"></i></a>
 			{{#if searching}}{{> search}}{{/if}}
 
-			{{#each posts}}
-				{{> tinypost}}
-			{{/each}}
+			{{#if posts}}
+				{{#each posts}}
+					{{> tinypost}}
+				{{/each}}
+			{{else}}
+				<article class="excerpt">
+					<p><em>No posts found.</em></p>
+				</article>
+			{{/if}}
 
 			{{#if more}}<a class="more" href="#">more</a>{{/if}}
 		</div>

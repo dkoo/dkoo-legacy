@@ -1,11 +1,12 @@
 Template.search.onRendered(function() {
-	var searchBar = document.querySelector('input.search'),
-		query = Session.get('filter');
+	var searchBar = document.querySelector('input.search');
 
 	searchBar.focus();
+});
 
-	if ( query ) {
-		searchBar.value = query;
+Template.search.helpers({
+	query: function() {
+		return Session.get('filter');
 	}
 });
 

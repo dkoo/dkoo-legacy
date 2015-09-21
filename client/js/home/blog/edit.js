@@ -92,7 +92,7 @@ Template.edit.events({
 		}
 	},
 	'click .add-tag, keydown input.tags': function(e) {
-		var field = e.target.value ? e.target : document.querySelector('.tags'),
+		var field = e.target.value ? e.target : document.querySelector('input.tags'),
 			input = field.value;
 
 		if ( e.keyCode === 13 || e.target.tagName === 'A' ) {
@@ -120,6 +120,7 @@ Template.edit.events({
 			published = document.querySelectorAll('h2 pre'),
 			content = e.target.content,
 			tags = e.target.tags,
+			excerpt = e.target.excerpt,
 			tagArr,
 			post = this._id ? this : { _id: 'new' },
 			// get a date number from the entered date and time, if any
@@ -142,6 +143,10 @@ Template.edit.events({
 		if ( tags.value ) {
 			tagArr = tags.value.split('\n');
 			input.tags = tagArr;
+		}
+
+		if ( excerpt.value ) {
+			input.excerpt = excerpt.value;
 		}
 
 		if ( input.title && input.content ) {

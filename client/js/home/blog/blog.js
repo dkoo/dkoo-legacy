@@ -18,7 +18,8 @@ Template.blog.helpers({
 			options = Session.get('subOptions') || {
 				limit: limit,
 				sort: { published: -1 }
-			};
+			},
+			results;
 
 
 		if ( !Meteor.user() ) {
@@ -29,7 +30,9 @@ Template.blog.helpers({
 		// setup the subscription
 		Meteor.subscribe('posts', filter, options, search );
 
-		return Posts.find( filter, { sort: { published: -1 } } );
+		results = Posts.find( filter, { sort: { published: -1 } } );
+
+		return results.count() ? results : false;
 	},
 	more: function() {
 		var limit = Session.get('subLimit') || 10,

@@ -21,6 +21,9 @@
 				<input class="tags" type="text" name="tags" placeholder="Tag"><a href="#" class="add-tag">&plus;</a>
 			{{/if}}
 
+			<label>Post summary</label>
+			<textarea name="excerpt" placeholder="Post summary (optional)" value="{{#if excerpt}}{{excerpt}}{{/if}}"></textarea>
+
 			<label>Publish Status</label>
 			<select name="visibility">
 				<option value="public" selected="{{#if statusIs "public"}}true{{/if}}">Published</option>
