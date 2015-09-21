@@ -11,7 +11,25 @@ Template.blog.helpers({
 		return postId ? true : false;
 	},
 	posts: function() {
-		return Posts.find({}, { sort: { published: -1 } } );
+		var filter = {},
+			search = Session.get('filter') || '',
+			limit = Session.get('subLimit') || 10,
+			now = Session.get('now') || Date.now(),
+			options = Session.get('subOptions') || {
+				limit: limit,
+				sort: { published: -1 }
+			};
+
+
+		if ( !Meteor.user() ) {
+			filter.status = 'public';
+			filter.published = { $lte: now };
+		}
+
+		// setup the subscription
+		Meteor.subscribe('posts', filter, options, search );
+
+		return Posts.find( filter, { sort: { published: -1 } } );
 	},
 	more: function() {
 		var limit = Session.get('subLimit') || 10,
@@ -44,6 +62,14 @@ Template.blog.events({
 		}
 	},
 	'click a.search': function(e) {
-		Meteor.utils.sessionToggle('searching');
+		e.preventDefault();
+
+		if ( Session.get('searching') ) {
+			Session.set('searching', false)
+			Session.set('filter', '');
+			Router.go('/blog');
+		} else {
+			Session.set('searching', true);
+		}
 	}
 });

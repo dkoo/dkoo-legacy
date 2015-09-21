@@ -14,10 +14,13 @@ section.blog {
 		&.posts {
 			padding-top: 4em;
 			position: relative;
+			.tags {
+				margin-bottom: 0;
+			}
 			a.search {
 				padding: 1em;
 				position: absolute;
-				top: 0;
+				top: 0.25em;
 				&:hover {
 					font-size: 125%;
 				}

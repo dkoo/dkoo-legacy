@@ -9,6 +9,12 @@
 			</header><div>
 				<h1>{{#if private}}<em>Draft:</em> {{/if}}{{title}}</h1>
 				{{#markdown}}{{excerpt}}{{/markdown}}
+
+				{{#if tags}}
+					<ul class="tags">
+						{{#each tags}}<li>{{this}}</li>{{/each}}
+					</ul>
+				{{/if}}
 			</div>
 		</a>
 		{{#if currentUser}}

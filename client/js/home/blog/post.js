@@ -9,6 +9,9 @@ Template.post.helpers({
 		console.log(post);
 
 		return post;
+	},
+	uri: function(tag) {
+		return '/blog?search=' + encodeURI(this);
 	}
 });
 
