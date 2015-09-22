@@ -1,8 +1,6 @@
 kootroller = RouteController.extend({
 	onBeforeAction: function() {
-		var currentPost = Session.get('currentPost'),
-			getPost,
-			query = this.params.query.search,
+		var query = this.params.query.search,
 			post,
 			data = {};
 
@@ -25,27 +23,56 @@ kootroller = RouteController.extend({
 				Session.set('editing', true);
 			}
 
-			if ( currentPost ) {
-				getPost = { _id: currentPost };
-			} else {
-				getPost = { slug: this.params.slug };
-			}
-
-			Meteor.subscribe('posts', getPost, {}, '');
-			post = Posts.findOne( getPost );
-
-			if ( !post ) {
-				post = Posts.findOne( getPost );
-			}
-
-			data.data = function() {
-				return post;
-			};
+			data = this.data();
 		} else {
 			Session.set('singlePost', false);
 		}
 
 		this.render('home', data);
+	},
+	data: function() {
+		var currentPost = Session.get('currentPost'),
+			getPost;
+
+		if ( currentPost ) {
+			getPost = { _id: currentPost };
+		} else {
+			getPost = { slug: this.params.slug };
+		}
+
+		Meteor.subscribe('posts', getPost, {}, '');
+		post = Posts.findOne( getPost );
+
+		if ( !post ) {
+			post = Posts.findOne( getPost );
+		}
+
+		return post;
+	},
+	onAfterAction: function() {
+		var post = this.data(),
+			title,
+			description;
+		
+		if ( post ) {
+			title = post.title;
+			description = Meteor.utils.excerpt(post);
+
+			SEO.set({
+				title: 'dkoo dot net → ' + post.title,
+				meta: {
+					'description': description
+				},
+				og: {
+					'title': post.title,
+					'description': description
+				}
+			});
+		} else if ( this.url === '/blog' ) {
+			SEO.set({
+				title: 'dkoo dot net → blog'
+			});
+		}
 	}
 });
 

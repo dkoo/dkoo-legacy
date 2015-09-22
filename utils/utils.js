@@ -86,6 +86,16 @@ Meteor.utils = {
 
 		return newSlug;
 	},
+	excerpt: function(post) {
+		if ( post.excerpt ) {
+			return post.excerpt;
+		} else {
+			var array = post.content.split(' '),
+				excerpt = array.slice(0, 50).join(' ') + '&#160;&#8230;';
+
+			return array.length >= 50 ? excerpt : post.content;
+		}
+	},
 	smartenQuotes: function(text) {
 		return text
 			.replace(/'''/g, '\u2034')													// triple prime
