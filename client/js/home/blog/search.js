@@ -22,7 +22,7 @@ Template.search.events({
 		var searchTerm = e.target.value,
 			now = Session.get('now') || Date.now();
 
-		if ( searchTerm.length > 2 ) {
+		if ( searchTerm.length > 0 ) {
 			Session.set('filter', searchTerm);
 		} else {
 			Session.set('filter', '');

@@ -145,9 +145,7 @@ Template.edit.events({
 			input.tags = tagArr;
 		}
 
-		if ( excerpt.value ) {
-			input.excerpt = excerpt.value;
-		}
+		input.excerpt = excerpt.value;
 
 		if ( input.title && input.content ) {
 			Meteor.call('editPost', post._id, input, function(err, response) {

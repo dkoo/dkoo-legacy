@@ -6,6 +6,7 @@ client/js/lib/googlePlaces.js
 ## Builds
 dist/
 tests/build/
+user.js
 
 ## Node.js
 lib-cov

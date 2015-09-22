@@ -2,13 +2,13 @@
 	<main class="admin">
 		{{#if resetting}}
 			<form id="reset">
-				<h2>Reset your password</h2>
+				<h2>Reset password</h2>
 				<p>Enter a new password below to reset your account.</p>
 
-				<label>Your password</label>
+				<label>Password</label>
 				<input type="password" name="password" required>
 
-				<label>Your password again</label>
+				<label>Password again</label>
 				<input type="password" name="confirm" required>
 
 				<button class="full activate">Reset password</button>
@@ -16,9 +16,9 @@
 		{{else}}
 			{{#if reset}}
 				<form id="start-reset">
-					<h2>Reset your password</h2>
+					<h2>Reset password</h2>
 
-					<label>Your e-mail address</label>
+					<label>E-mail address</label>
 					<input type="email" name="email" required>
 
 					<button class="full send-reset">Send recovery e-mail</button>
@@ -27,18 +27,16 @@
 
 			{{else}}
 				<form id="login">
-					<h2>Log in</h2>
+					<h2>Log into dkoo.net</h2>
 
-					<label>Your username</label>
+					<label>Username</label>
 					<input type="text" name="user" required>
 
-					<label>Your password</label>
+					<label>Password</label>
 					<input type="password" name="password" required>
 
 					<button class="full signin">Log in</button>
-					<button class="full signup">Register</button>
-
-					<a href="#" class="reset">Forgot your password?</a>
+					<button class="full reset">Reset password</button>
 				</form>
 			{{/if}}
 		{{/if}}
