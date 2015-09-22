@@ -1,10 +1,9 @@
 kootroller = RouteController.extend({
+	// init actions based on URL
 	onBeforeAction: function() {
 		var query = this.params.query.search,
 			post,
-			data = {};
-
-		// Session.set('searching', false);
+			data = this.data();
 
 		if ( this.url === '/' ) {
 			Session.set('viewingBlog', false);
@@ -17,44 +16,54 @@ kootroller = RouteController.extend({
 			Session.set('filter', decodeURI(query));
 		}
 
-		if ( this.params.slug ) {
-			Session.set('singlePost', true);
-			if ( this.params.slug === 'new' ) {
-				Session.set('editing', true);
-			}
-
-			data = this.data();
-		} else {
-			Session.set('singlePost', false);
-		}
-
 		this.render('home', data);
 	},
+	// set the data context based on URL
 	data: function() {
 		var currentPost = Session.get('currentPost'),
 			getPost;
 
-		if ( currentPost ) {
-			getPost = { _id: currentPost };
-		} else {
-			getPost = { slug: this.params.slug };
-		}
+		if ( this.params.slug ) {
+		// if viewing a single post page
+			Session.set('singlePost', true);
 
-		Meteor.subscribe('posts', getPost, {}, '');
-		post = Posts.findOne( getPost );
+			if ( this.params.slug === 'new' ) {
+				Session.set('editing', true);
+			}
 
-		if ( !post ) {
+			if ( currentPost ) {
+				getPost = { _id: currentPost };
+			} else {
+				getPost = { slug: this.params.slug };
+			}
+
+			Meteor.subscribe('posts', getPost, {}, '');
 			post = Posts.findOne( getPost );
-		}
 
-		return post;
+			if ( !post ) {
+				post = Posts.findOne( getPost );
+			}
+
+			return post;
+		} else {
+		// if viewing all posts
+			Session.set('singlePost', false);
+			return {};
+		}
 	},
+	// dynamically update title and meta tags for SEO
 	onAfterAction: function() {
 		var post = this.data(),
 			title,
 			description;
 		
-		if ( post ) {
+		if ( this.url === '/blog' ) {
+			SEO.set({
+				title: 'dkoo dot net → blog'
+			});
+
+			return;
+		} else if ( post ) {
 			title = post.title;
 			description = Meteor.utils.excerpt(post);
 
@@ -67,10 +76,6 @@ kootroller = RouteController.extend({
 					'title': post.title,
 					'description': description
 				}
-			});
-		} else if ( this.url === '/blog' ) {
-			SEO.set({
-				title: 'dkoo dot net → blog'
 			});
 		}
 	}

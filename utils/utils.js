@@ -91,9 +91,9 @@ Meteor.utils = {
 			return post.excerpt;
 		} else {
 			var array = post.content.split(' '),
-				excerpt = array.slice(0, 50).join(' ') + '&#160;&#8230;';
+				excerpt = array.slice(0, 25).join(' ') + '&#160;&#8230;';
 
-			return array.length >= 50 ? excerpt : post.content;
+			return array.length >= 25 ? excerpt : post.content;
 		}
 	},
 	smartenQuotes: function(text) {
