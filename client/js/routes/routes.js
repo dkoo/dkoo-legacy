@@ -65,3 +65,7 @@ Router.route('/blog', { controller: kootroller }, function () {
 });
 
 Router.route('/blog/:slug', { controller: kootroller });
+
+Router.configure({
+	notFoundTemplate: 'notFound'
+});
