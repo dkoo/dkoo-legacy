@@ -68,7 +68,7 @@ Template.blog.events({
 		e.preventDefault();
 
 		if ( Session.get('searching') ) {
-			Session.set('searching', false)
+			Session.set('searching', false);
 			Session.set('filter', '');
 			Router.go('/blog');
 		} else {
