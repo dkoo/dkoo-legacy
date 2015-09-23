@@ -1,4 +1,5 @@
 Template.blog.onRendered(function() {
+	// reset 'now' variable every minute, so that new posts appear automatically
 	Meteor.setInterval(function() {
 		Session.set('now', Date.now());
 	}, 60000);
@@ -21,7 +22,7 @@ Template.blog.helpers({
 			},
 			results;
 
-
+		// if not logged in, limit visible posts
 		if ( !Meteor.user() ) {
 			filter.status = 'public';
 			filter.published = { $lte: now };
@@ -38,6 +39,7 @@ Template.blog.helpers({
 		var limit = Session.get('subLimit') || 10,
 			count = Posts.find().count();
 
+		// bug: if the total number of posts is a multiple of 10, the 'more' button will always be visible
 		if ( count < limit ) {
 			return false;
 		} else {
@@ -58,6 +60,7 @@ Template.blog.events({
 
 		Session.set('subLimit', limit + 10);
 	},
+	// infinite scroll
 	'scroll .posts': function(e) {
 		if ( window.innerHeight + e.target.scrollTop >= e.target.scrollHeight - 50 ) {
 			var limit = Session.get('subLimit') || 10;

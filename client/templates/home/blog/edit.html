@@ -24,6 +24,9 @@
 			<label>Post summary</label>
 			<textarea name="excerpt" placeholder="Post summary (optional)" value="{{#if excerpt}}{{excerpt}}{{/if}}"></textarea>
 
+			<label>Slug</label>
+			<input class="slug" name="slug" placeholder="Post slug" value="{{#if slug}}{{slug}}{{/if}}">
+
 			<label>Publish Status</label>
 			<select name="visibility">
 				<option value="public" selected="{{#if statusIs "public"}}true{{/if}}">Published</option>

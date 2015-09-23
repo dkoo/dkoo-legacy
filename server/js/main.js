@@ -1,6 +1,12 @@
 // init Posts collection
 Posts = new Mongo.Collection('posts');
 
+Meteor.startup(function() {
+	Meteor.setInterval(function() {
+		Meteor.now = Date.now();
+	}, 60000);
+});
+
 Meteor.publish('posts', function (filter, options, search) {
 	check(filter, Object);
 	check(options, Object);
@@ -12,12 +18,26 @@ Meteor.publish('posts', function (filter, options, search) {
 		}
 	}
 
+	// double-check user status before publishing private documents
+	if ( !Meteor.dkoo.checkUser(this.userId) ) {
+		if ( !filter.status ) { 
+			filter.status = 'public';
+		}
+
+		if ( !filter.published ) { 
+			filter.published = { $lte: Meteor.now };
+		}
+	}
+
 	if ( search ) {
+		// simple sanitization to strip any tag-like strings
+		search = search.replace(/<(?:.|\n)*?>/gm, '');
+
 		filter['$or'] = [
 			{ title: { $regex: new RegExp('(?=.*' + search + ').*', 'i') } },
 			{ content: { $regex: new RegExp('(?=.*' + search + ').*' + '.*', 'i') } },
 			{ tags: { $regex: new RegExp('(?=.*' + search + ').*' + '.*', 'i') } },
-			{ published: { $gte: Date.parse(search), $lte: Date.parse(search) + 86400000 } }
+			{ published: { $gte: Date.parse(search), $lte: Date.parse(search) + 86400000 } } // date queries should find all posts within a 24-hour period
 		];
 	}
 

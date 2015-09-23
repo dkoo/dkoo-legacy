@@ -33,7 +33,7 @@
 		overflow: hidden;
 		resize: none;
 		transition: opacity 0.5s ease-in-out;
-		&.tags {
+		&.tags, {
 			margin-top: 1.5em;
 		}
 	}
@@ -48,6 +48,9 @@
 		letter-spacing: 0.05em;
 		margin-bottom: 0.25em;
 		text-transform: uppercase;
+	}
+	input.slug {
+		width: 100%;
 	}
 	a.add-tag {
 		padding: 0.25em 0.5em;

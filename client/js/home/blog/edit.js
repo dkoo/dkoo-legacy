@@ -121,6 +121,7 @@ Template.edit.events({
 			content = e.target.content,
 			tags = e.target.tags,
 			excerpt = e.target.excerpt,
+			slug = e.target.slug,
 			tagArr,
 			post = this._id ? this : { _id: 'new' },
 			// get a date number from the entered date and time, if any
@@ -145,7 +146,15 @@ Template.edit.events({
 			input.tags = tagArr;
 		}
 
-		input.excerpt = excerpt.value;
+		if ( excerpt.value ) {
+			input.excerpt = excerpt.value;
+		}
+
+		if ( slug.value ) {
+			if ( slug.value !== post.slug ) {
+				input.slug = slug.value;
+			}
+		}
 
 		if ( input.title && input.content ) {
 			Meteor.call('editPost', post._id, input, function(err, response) {
@@ -156,6 +165,9 @@ Template.edit.events({
 						Router.go('/blog/');
 					}
 					Session.set('editing', false);
+					if ( input.slug ) {
+						Router.go('/blog/');
+					}
 				}
 			});
 		} else {

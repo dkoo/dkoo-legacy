@@ -64,19 +64,21 @@ kootroller = RouteController.extend({
 
 			return;
 		} else if ( post ) {
-			title = post.title;
-			description = Meteor.utils.excerpt(post);
+			if ( post._id ) {
+				title = post.title;
+				description = Meteor.utils.excerpt(post);
 
-			SEO.set({
-				title: 'dkoo dot net → ' + post.title,
-				meta: {
-					'description': description
-				},
-				og: {
-					'title': post.title,
-					'description': description
-				}
-			});
+				SEO.set({
+					title: 'dkoo dot net → ' + post.title,
+					meta: {
+						'description': description
+					},
+					og: {
+						'title': post.title,
+						'description': description
+					}
+				});
+			}
 		}
 	}
 });
