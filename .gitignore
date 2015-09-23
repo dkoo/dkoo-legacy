@@ -1,12 +1,7 @@
-# yumhut
-
-## Google Places API (contains API key)
-client/js/lib/googlePlaces.js
+# dkoo - deployment .gitignore
 
 ## Builds
-dist/
 tests/build/
-user.js
 
 ## Node.js
 lib-cov
