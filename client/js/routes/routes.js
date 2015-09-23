@@ -90,10 +90,6 @@ Router.route('/admin', function () {
 	this.render('admin');
 });
 
-Router.route('/register', function () {
-	this.render('register');
-});
-
 Router.route('/blog', { controller: kootroller }, function () {
 	Session.set('editing', false);
 });
