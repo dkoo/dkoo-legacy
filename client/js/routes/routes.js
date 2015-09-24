@@ -20,11 +20,7 @@ kootroller = RouteController.extend({
 		if ( data === false ) {
 			this.render('notFound');
 		} else {
-			if ( data ) {
-				this.render('home', data);
-			} else {
-				this.render('loading');
-			}
+			this.render('home', data);
 		}
 	},
 	waitOn: function() {
