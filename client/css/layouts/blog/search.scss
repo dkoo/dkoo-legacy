@@ -9,6 +9,10 @@ section.blog {
 			position: absolute;
 			right: 0;
 			top: 0.5em;
+			color: white;
+			&:hover {
+				color: #8896AB;
+			}
 		}
 	}
 	input.search {
@@ -18,5 +22,8 @@ section.blog {
 		padding-right: 1.5em;
 		color: white;
 		font-size: 2em;
+		&::placeholder {
+			color: #6e7984;
+		}
 	}
 }
