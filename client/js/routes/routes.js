@@ -16,12 +16,26 @@ kootroller = RouteController.extend({
 			Session.set('filter', decodeURI(query));
 		}
 
-		this.render('home', data);
+
+		if ( data === false ) {
+			this.render('notFound');
+		} else {
+			if ( data ) {
+				this.render('home', data);
+			} else {
+				this.render('loading');
+			}
+		}
+	},
+	waitOn: function() {
+		this.data();
 	},
 	// set the data context based on URL
 	data: function() {
 		var currentPost = Session.get('currentPost'),
-			getPost;
+			getPost,
+			subscription,
+			post;
 
 		if ( this.params.slug ) {
 		// if viewing a single post page
@@ -37,14 +51,17 @@ kootroller = RouteController.extend({
 				getPost = { slug: this.params.slug };
 			}
 
-			Meteor.subscribe('posts', getPost, {}, '');
-			post = Posts.findOne( getPost );
+			subscription = Meteor.subscribe('posts', getPost, {}, '');
 
-			if ( !post ) {
+			if ( subscription.ready() ) {
 				post = Posts.findOne( getPost );
-			}
 
-			return post;
+				if ( !post ) {
+					return false;
+				}
+
+				return post;
+			}
 		} else {
 		// if viewing all posts
 			Session.set('singlePost', false);

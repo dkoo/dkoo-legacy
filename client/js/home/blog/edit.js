@@ -120,7 +120,7 @@ Template.edit.events({
 			published = document.querySelectorAll('h2 pre'),
 			content = e.target.content,
 			tags = e.target.tags,
-			excerpt = e.target.excerpt,
+			excerpt = document.querySelector('h3 pre'),
 			slug = e.target.slug,
 			tagArr,
 			post = this._id ? this : { _id: 'new' },
@@ -146,13 +146,13 @@ Template.edit.events({
 			input.tags = tagArr;
 		}
 
-		if ( excerpt.value ) {
-			input.excerpt = excerpt.value;
+		if ( excerpt.textContent ) {
+			input.excerpt = excerpt.textContent.trim();
 		}
 
 		if ( slug.value ) {
 			if ( slug.value !== post.slug ) {
-				input.slug = slug.value;
+				input.slug = slug.value.trim();
 			}
 		}
 

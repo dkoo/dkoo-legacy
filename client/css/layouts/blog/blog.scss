@@ -14,6 +14,9 @@ section.blog {
 		&.posts {
 			padding-top: 4em;
 			position: relative;
+			article div p {
+				font-style: italic;
+			}
 			.tags {
 				margin-bottom: 0;
 			}
@@ -34,7 +37,7 @@ section.blog {
 			}
 		}
 		&.single {
-			background-color: #222;
+			background-color: #1e2124;
 			color: #222;
 			position: absolute;
 			width: 100%;
@@ -69,7 +72,7 @@ section.blog {
 	article {
 		box-sizing: border-box;
 		margin: auto;
-		max-width: 800px;
+		max-width: 780px;
 		padding: 1.5em;
 		position: relative;
 		transition: opacity 0.5s ease-in-out;
@@ -93,13 +96,18 @@ section.blog {
 		h1 {
 			font-size: 1.5em;
 			letter-spacing: 0.05em;
-			margin-bottom: 0.75em;
 		}
 		h2 {
 			font-size: 12px;
 			font-weight: 400;
 			letter-spacing: 0.05em;
 			text-transform: uppercase;
+		}
+		h3.dek {
+			font-family: $serif;
+			font-weight: 400;
+			font-style: italic;
+			margin-top: 0.5em;
 		}
 		p {
 			line-height: 1.65em;
@@ -108,7 +116,7 @@ section.blog {
 			}
 		}
 		.content {
-			margin-bottom: 1em;
+			margin: 2em 0;
 			h1 {
 				font-size: 1em;
 				font-weight: 400;
@@ -148,6 +156,27 @@ section.blog {
 				ol {
 					list-style: lower-roman;
 				}
+			}
+			code {
+				background-color: #f8f8f8;
+				font-family: $code;
+				font-size: 14px;
+				padding: 0 0.25em;	
+			}
+			pre {
+				code {
+					border: 1px solid #eee;
+					border-radius: 4px;
+					display: block;
+					overflow-x: auto;
+					padding: 1em;
+				}
+			}
+			blockquote {
+				font-size: 14px;
+				line-height: 1.65em;
+				margin: 1em 0;
+				padding: 0.25em 1em;
 			}
 		}
 		ul.tags {
@@ -229,6 +258,12 @@ section.blog {
 				width: 78%;
 				height: 100%;
 				vertical-align: top;
+			}
+			&.excerpt {
+				ul.tags,
+				.action.edit {
+					margin-left: calc(22% + 1rem);
+				}
 			}
 		}
 	}

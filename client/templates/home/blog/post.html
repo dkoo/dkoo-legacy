@@ -11,6 +11,11 @@
 					<h2>{{#if published}}{{date}}{{/if}}</h2>
 				</header><div>
 					<h1>{{#if private}}<em>Draft:</em> {{/if}}{{title}}</h1>
+
+					{{#if excerpt}}
+						<h3 class="dek">{{excerpt}}</h3>
+					{{/if}}
+
 					<section class="content">
 						{{#markdown}}{{content}}{{/markdown}}
 					</section>
@@ -23,12 +28,9 @@
 
 					{{#if currentUser}}
 
-						{{#if excerpt}}<h2><strong>Post Summary:</strong></h2>
-						<section class="content">{{#markdown}}{{excerpt}}{{/markdown}}</section>{{/if}}
-
 						<h2><strong>Publish Status:</strong> {{status}}</h2>
-						<a href="/edit?post={{_id}}" class="action edit">Edit</a>
-						<a href="#" class="action delete">Delete</a>
+						<a href="/edit-post" class="action edit">Edit</a>
+						<a href="/delete-post" class="action delete">Delete</a>
 					{{/if}}
 				</div>
 			{{/if}}

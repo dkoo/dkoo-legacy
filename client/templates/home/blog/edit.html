@@ -4,13 +4,14 @@
 			<h2><pre contentEditable data-name="published-date" data-placeholder="MM/DD/YYYY"></pre> at <pre contentEditable data-name="published-time" data-placeholder="12:00 am"></pre></h2>
 		</header><div>
 			<h1><pre contentEditable data-name="title" data-placeholder="Post title"></pre></h1>
+			<h3 class="dek"><pre contentEditable data-name="excerpt" data-placeholder="Post excerpt">{{excerpt}}</pre></h3>
 			<section class="content">
 				<textarea name="content" placeholder="Post content" value="{{#if content}}{{content}}{{/if}}"></textarea>
 			</section>
 
 			{{#if tags}}
 				<ul class="tags">
-					{{#each tags}}<li><a href="#" class="remove-tag" title="Remove this tag">{{this}} &times;</a></li>{{/each}}
+					{{#each tags}}<li><a href="/remove-tag" class="remove-tag" title="Remove this tag">{{this}} &times;</a></li>{{/each}}
 				</ul>
 			{{/if}}
 			
@@ -18,11 +19,8 @@
 				<textarea class="tags" name="tags" placeholder="Post tags (enter each on own line)"></textarea>
 			{{else}}
 				<label>Add tag</label>
-				<input class="tags" type="text" name="tags" placeholder="Tag"><a href="#" class="add-tag">&plus;</a>
+				<input class="tags" type="text" name="tags" placeholder="Tag"><a href="add-tag" class="add-tag">&plus;</a>
 			{{/if}}
-
-			<label>Post summary</label>
-			<textarea name="excerpt" placeholder="Post summary (optional)" value="{{#if excerpt}}{{excerpt}}{{/if}}"></textarea>
 
 			<label>Slug</label>
 			<input class="slug" name="slug" placeholder="Post slug" value="{{#if slug}}{{slug}}{{/if}}">

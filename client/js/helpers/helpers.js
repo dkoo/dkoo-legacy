@@ -9,3 +9,7 @@ Template.registerHelper('date', function() {
 Template.registerHelper('private', function() {
 	return this.status === 'private' ? true : false;
 });
+
+Template.registerHelper('uri', function(tag) {
+	return '/blog?search=' + encodeURI(this);
+});
