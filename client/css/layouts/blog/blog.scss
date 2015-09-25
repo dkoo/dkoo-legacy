@@ -1,9 +1,11 @@
 section.blog {
+	/* autoprefixer: off */
 	background-color: #1e2124;
 	perspective: 2500px;
 	color: white;
 	height: 100%;
 	& > div {
+		/* autoprefixer: on */
 		padding-bottom: 3em;
 		backface-visibility: hidden;
 		box-sizing: border-box;
@@ -39,16 +41,18 @@ section.blog {
 		&.single {
 			background-color: #1e2124;
 			color: #222;
+			padding: 0 1.5em;
 			position: absolute;
 			width: 100%;
 			height: 100%;
+			overflow-x: hidden;
 			top: 0;
 			transform: rotateY(180deg);
 			z-index: -1;
 			article {
 				opacity: 0;
 				min-height: 100%;
-				padding-top: 4em;
+				padding: 4em 0;
 			}
 		}
 	}
@@ -184,7 +188,7 @@ section.blog {
 			li {
 				display: inline-block;
 				font-family: $display;
-				font-size: 10px;
+				font-size: 11px;
 				letter-spacing: 0.05em;
 				line-height: 1.25em;
 				text-transform: uppercase;
@@ -261,7 +265,7 @@ section.blog {
 			}
 			&.excerpt {
 				ul.tags,
-				.action.edit {
+				.action.delete {
 					margin-left: calc(22% + 1rem);
 				}
 			}
