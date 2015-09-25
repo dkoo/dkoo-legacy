@@ -50,9 +50,9 @@ kootroller = RouteController.extend({
 			subscription = Meteor.subscribe('posts', getPost, {}, '');
 
 			if ( subscription.ready() ) {
-				post = Posts.findOne( getPost );
+				post = Posts.findOne( getPost ) || {};
 
-				if ( !post ) {
+				if ( !post && this.params.slug !== 'new' ) {
 					return false;
 				}
 
