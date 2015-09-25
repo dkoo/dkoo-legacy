@@ -10,11 +10,12 @@ section.intro {
 	}
 	div {
 		text-align: center;
-		width: calc(100% - 0.5em);
+		width: 99%;
 		h1 {
 			font-size: 2.75em;
 			font-weight: 400;
-			line-height: 1.5em;
+			line-height: 1em;
+			margin-bottom: 0.25em;
 			a {
 				color: black;
 				&:hover {

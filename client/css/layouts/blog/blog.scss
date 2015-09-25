@@ -3,17 +3,16 @@ section.blog {
 	background-color: #1e2124;
 	perspective: 2500px;
 	color: white;
-	height: 100%;
 	& > div {
 		/* autoprefixer: on */
 		padding-bottom: 3em;
 		backface-visibility: hidden;
 		box-sizing: border-box;
-		height: 100%;
-		overflow: scroll;
-		-webkit-overflow-scrolling: touch;
 		transition: background-color 0.5s ease-in-out, transform 0.5s ease-in-out, z-index 0.5s ease-in-out;
+		height: 100%;
 		&.posts {
+			overflow-y: scroll;
+			-webkit-overflow-scrolling: touch;
 			padding-top: 4em;
 			position: relative;
 			article div p {
@@ -41,10 +40,10 @@ section.blog {
 		&.single {
 			background-color: #1e2124;
 			color: #222;
+			min-height: 100%;
 			padding: 0 1.5em;
 			position: absolute;
 			width: 100%;
-			height: 100%;
 			overflow-x: hidden;
 			top: 0;
 			transform: rotateY(180deg);
@@ -60,10 +59,14 @@ section.blog {
 		div.posts {
 			transform: rotateY(-180deg);
 			z-index: -1;
+			overflow: hidden;
+			-webkit-overflow-scrolling: none;
 		}
 		div.single {
 			background-color: white;
 			transform: none;
+			overflow-y: scroll;
+			-webkit-overflow-scrolling: touch;
 			z-index: 0;
 			article {
 				opacity: 1;
@@ -252,7 +255,6 @@ section.blog {
 				box-sizing: border-box;
 				display: inline-block;
 				width: 22%;
-				height: 100%;
 				vertical-align: top;
 			}
 			div {
@@ -260,7 +262,6 @@ section.blog {
 				display: inline-block;
 				padding-left: 1em;
 				width: 78%;
-				height: 100%;
 				vertical-align: top;
 			}
 			&.excerpt {
