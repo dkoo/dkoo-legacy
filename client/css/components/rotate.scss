@@ -1,7 +1,9 @@
 .container {
+	/* autoprefixer: off */
 	perspective: 2500px;
 	transform-style: preserve-3d;
 	section {
+		/* autoprefixer: on */
 		backface-visibility: hidden;
 		box-sizing: border-box;
 		position: relative;

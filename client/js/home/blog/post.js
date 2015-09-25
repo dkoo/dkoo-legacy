@@ -7,7 +7,7 @@ Template.post.helpers({
 Template.post.events({
 	'click .edit': function(e) {
 		e.preventDefault();
-		Session.set('editing', this._id);
+		Session.set('editing', true);
 	},
 	'click .delete': function(e) {
 		e.preventDefault();

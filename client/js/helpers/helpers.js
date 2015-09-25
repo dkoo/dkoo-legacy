@@ -11,5 +11,5 @@ Template.registerHelper('private', function() {
 });
 
 Template.registerHelper('uri', function(tag) {
-	return '/blog?search=' + encodeURI(this);
+	return '/blog?search=' + encodeURI(this).replace('#', '%23');
 });
