@@ -41,10 +41,6 @@ Template.edit.events({
 	'click .cancel': function(e) {
 		e.preventDefault();
 		if ( Session.get('editing') === true ) {
-			var blog = document.querySelector('section.blog');
-
-			blog.classList.remove('post');
-
 			Router.go('/blog');
 		}
 		Session.set('editing', false);
@@ -161,9 +157,6 @@ Template.edit.events({
 				if ( err ) {
 					console.log(err);
 				} else {
-					if ( Session.get('editing') === true ) {
-						Router.go('/blog/');
-					}
 					Session.set('editing', false);
 					if ( input.slug ) {
 						Router.go('/blog/');
