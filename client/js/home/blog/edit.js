@@ -158,7 +158,7 @@ Template.edit.events({
 					console.log(err);
 				} else {
 					Session.set('editing', false);
-					if ( input.slug ) {
+					if ( input.slug || post._id === 'new' ) {
 						Router.go('/blog/');
 					}
 				}
