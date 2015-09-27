@@ -16,7 +16,6 @@ kootroller = RouteController.extend({
 			Session.set('filter', decodeURI(query));
 		}
 
-
 		if ( data === false ) {
 			this.render('notFound');
 		} else {
@@ -39,6 +38,7 @@ kootroller = RouteController.extend({
 
 			if ( this.params.slug === 'new' ) {
 				Session.set('editing', true);
+				return {};
 			}
 
 			if ( currentPost ) {
@@ -50,9 +50,9 @@ kootroller = RouteController.extend({
 			subscription = Meteor.subscribe('posts', getPost, {}, '');
 
 			if ( subscription.ready() ) {
-				post = Posts.findOne( getPost ) || {};
+				post = Posts.findOne( getPost );
 
-				if ( !post && this.params.slug !== 'new' ) {
+				if ( !post ) {
 					return false;
 				}
 
