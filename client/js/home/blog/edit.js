@@ -6,7 +6,7 @@ Template.edit.onRendered(function() {
 
 	content.style.height = content.scrollHeight + 'px';
 
-	if ( data ) {
+	if ( data._id ) {
 		var fields = document.getElementsByTagName('pre'),
 			field,
 			prettyDate = Meteor.utils.prettifyDate(new Date(data.published));
