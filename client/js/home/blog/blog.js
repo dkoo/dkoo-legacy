@@ -29,7 +29,12 @@ Template.blog.helpers({
 		}
 
 		// setup the subscription
-		Meteor.subscribe('posts', filter, options, search );
+		Meteor.subscribe('posts', filter, options, search, function(err, response) {
+			if ( err ) {
+				console.log(err);
+			}
+			Session.set('loading', false);
+		});
 
 		results = Posts.find( filter, { sort: { published: -1 } } );
 

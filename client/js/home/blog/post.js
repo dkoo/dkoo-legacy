@@ -1,3 +1,7 @@
+Template.post.onRendered(function() {
+	Session.set('loading', true);
+});
+
 Template.post.helpers({
 	editing: function() {
 		return Session.get('editing');

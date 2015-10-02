@@ -56,6 +56,7 @@ kootroller = RouteController.extend({
 					return false;
 				}
 
+				Session.set('loading', false);
 				return post;
 			}
 		} else {
