@@ -1,4 +1,7 @@
 <template name="home">
+	{{#if loading}}
+		<div class="loading"></div>
+	{{/if}}
 	<main class="container {{#if viewingBlog}}blog{{/if}}">
 		<section class="intro">
 			<div>
