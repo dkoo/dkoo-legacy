@@ -58,7 +58,8 @@ Template.edit.events({
 				field.textContent = input;
 			}
 		} else {
-			input = Meteor.utils.smartenQuotes(field.value.trim());
+			// input = Meteor.utils.smartenQuotes(field.value.trim());
+			input = field.textContent.trim();
 			if ( input ) { 
 				field.value = input;
 			}
