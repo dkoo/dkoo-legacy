@@ -5,7 +5,7 @@ Template.modal.helpers({
 });
 
 Template.modal.events({
-	'click .modal': function(e) {
+	'click .modal, touchstart .modal': function(e) {
 		Session.set('modal', undefined);
 	}
 });
