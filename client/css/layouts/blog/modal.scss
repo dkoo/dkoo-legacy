@@ -1,0 +1,23 @@
+.modal {
+	background-color: rgba(0, 0, 0, 0.75);
+	cursor: pointer;
+	height: 100%;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	z-index: 10;
+	&::after,
+	img {
+		display: inline-block;
+		vertical-align: middle;
+	}
+	&::after {
+		content: '';
+		height: 100%;
+	}
+	img {
+		box-shadow: 0.5em 0.5em 1em rgba(0, 0, 0, 0.25);
+		max-width: 95%;
+		max-height: 95%;
+	}
+}

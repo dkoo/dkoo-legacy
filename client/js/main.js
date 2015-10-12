@@ -5,6 +5,12 @@ Posts = new Mongo.Collection('posts');
 Meteor.startup(function() {
 	Session.set('editing', false);
 
+	document.body.addEventListener('keyup', function(e) {
+		if ( e.keyCode === 27 && !!Session.set('modal') ) {
+			Session.set('modal', undefined);
+		}
+	});
+
 	// default SEO title/meta tags
 	return SEO.config({
 		title: 'dkoo dot net',

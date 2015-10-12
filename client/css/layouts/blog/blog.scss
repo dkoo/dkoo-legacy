@@ -164,6 +164,9 @@ section.blog {
 					list-style: lower-roman;
 				}
 			}
+			img {
+				cursor: pointer;
+			}
 			code {
 				background-color: #f8f8f8;
 				font-family: $code;
