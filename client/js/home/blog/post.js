@@ -17,5 +17,12 @@ Template.post.events({
 		e.preventDefault();
 		Meteor.call('deletePost', this._id);
 		Router.go('/blog');
+	},
+	'click .content img': function(e) {
+		var img = {
+			src: e.currentTarget.getAttribute('src'),
+			caption: e.currentTarget.getAttribute('alt')
+		};
+		Session.set('modal', img);
 	}
 });
