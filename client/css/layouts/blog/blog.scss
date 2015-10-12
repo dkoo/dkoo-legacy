@@ -198,9 +198,10 @@ section.blog {
 				font-size: 11px;
 				letter-spacing: 0.05em;
 				line-height: 1.25em;
+				margin-right: 2em;
 				text-transform: uppercase;
-				& + li {
-					margin-left: 2em;
+				&:last-child {
+					margin-left: 0;
 				}
 				a {
 					color: #8896AB;
