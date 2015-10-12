@@ -5,7 +5,11 @@ Template.modal.helpers({
 });
 
 Template.modal.events({
-	'click .modal, touchstart .modal': function(e) {
+	'click .modal': function(e) {
 		Session.set('modal', undefined);
+	},
+	'touchmove .modal': function(e) {
+		// prevent scrolling in iOS while modal is active
+		e.preventDefault();
 	}
 });
