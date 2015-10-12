@@ -62,6 +62,7 @@ kootroller = RouteController.extend({
 		} else {
 		// if viewing all posts
 			Session.set('singlePost', false);
+			Session.set('modal', undefined);
 			return {};
 		}
 	},
