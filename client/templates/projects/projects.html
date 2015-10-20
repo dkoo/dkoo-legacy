@@ -1,5 +1,5 @@
 <template name="projects">
-	<main>
+	<main class="projects {{#if currentUser}}logged-in{{/if}}">
 		<header>
 			<h2>
 				<a href="/">dkoo.net</a>
@@ -9,26 +9,31 @@
 
 		<section>
 			<figure>
-				<a href="#"><img src="http://placehold.it/600x900" alt="Placeholder image"></a>
+				<a href="#"><img src="http://placehold.it/600x900/ffffff/000000" alt="Placeholder image"></a>
 			</figure><figure>
-				<a href="#"><img src="http://placehold.it/600x600" alt="Placeholder image"></a>
+				<a href="#"><img src="http://placehold.it/600x600/ffffff/000000" alt="Placeholder image"></a>
 			</figure><figure>
-				<a href="#"><img src="http://placehold.it/600x600" alt="Placeholder image"></a>
+				<a href="#"><img src="http://placehold.it/600x600/ffffff/000000" alt="Placeholder image"></a>
 			</figure><figure>
-				<a href="#"><img src="http://placehold.it/600x600" alt="Placeholder image"></a>
+				<a href="#"><img src="http://placehold.it/600x900/ffffff/000000" alt="Placeholder image"></a>
 			</figure><figure>
-				<a href="#"><img src="http://placehold.it/600x900" alt="Placeholder image"></a>
+				<a href="#"><img src="http://placehold.it/600x900/ffffff/000000" alt="Placeholder image"></a>
 			</figure><figure>
-				<a href="#"><img src="http://placehold.it/600x600" alt="Placeholder image"></a>
+				<a href="#"><img src="http://placehold.it/600x600/ffffff/000000" alt="Placeholder image"></a>
 			</figure><figure>
-				<a href="#"><img src="http://placehold.it/600x600" alt="Placeholder image"></a>
+				<a href="#"><img src="http://placehold.it/600x600/ffffff/000000" alt="Placeholder image"></a>
 			</figure><figure>
-				<a href="#"><img src="http://placehold.it/600x600" alt="Placeholder image"></a>
-			</figure><figure>
-				<a href="#"><img src="http://placehold.it/600x900" alt="Placeholder image"></a>
+				<a href="#"><img src="http://placehold.it/600x900/ffffff/000000" alt="Placeholder image"></a>
 			</figure>
 		</section>
-		{{#with projects}}
-		{{/with}}
+
+		{{> project}}
+
+		{{#if currentUser}}
+			<nav id="toolbar">
+				<a href="/projects/new" class="new-project">New Project</a>
+				<a href="/" class="logout">Log out</a>
+			</nav>
+		{{/if}}
 	</main>
 </template>

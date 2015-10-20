@@ -1,16 +1,13 @@
 .projects {
-	height: auto;
-	overflow: auto;
-	body {
-		background: #efefef;
-		height: auto;
-		overflow: auto;
-		main {
-			box-sizing: border-box;
-			margin: auto;
-			max-width: 1280px;
-			padding: 1.5em;
-		}
+	background: #f5f5f5;
+	box-sizing: border-box;
+	height: 100%;
+	margin: auto;
+	-webkit-overflow-scrolling: touch;
+	overflow-y: auto;
+	padding: 1em;
+	&.logged-in {
+		padding-bottom: 4em;
 	}
 	h1,
 	h2 {
@@ -22,14 +19,15 @@
 		a {
 			display: inline-block;
 			font-size: 14px;
+			padding: 1em 0;
 			& + a {
 				margin-left: 1.5em;
 			}
 		}
 	}
-	section {
+	// projects masonry grid
+	> section {
 		break-inside: avoid;
-		margin-top: 1em;
 		text-align: center;
 		transition: transform $transition, opacity $transition;
 		&.preload {
@@ -41,9 +39,79 @@
 			display: inline-block;
 			margin-top: 1em;
 			vertical-align: top;
+			a {
+				backface-visibility: hidden;
+				display: block;
+				opacity: 0.5;
+				transition: opacity $transition, transform $transition;
+				&:hover {
+					opacity: 1;
+					transform: scale(1.05);
+				}
+			}
 			img {
 				display: block;
 			}
+		}
+	}
+	// expanded project view
+	article {
+		background-color: white;
+		box-sizing: border-box;
+		height: 100%;
+		left: 0;
+		opacity: 0;
+		overflow-y: auto;
+		padding: 1.5em;
+		position: fixed;
+		text-align: center;
+		top: 0;
+		transform: scale(0);
+		transition: opacity $transition, transform $transition;
+		width: 100%;
+		&.active {
+			opacity: 1;
+			transform: none;
+		}
+		&::after,
+		section {
+			display: inline-block;
+			text-align: left;
+			vertical-align: middle;
+		}
+		&::after {
+			content: '';
+			height: 100%;
+		}
+		section {
+			max-width: 99%;
+		}
+		div {
+			box-sizing: border-box;
+			vertical-align: top;
+		}
+		figure {
+			vertical-align: top;
+			img {
+				display: block;
+				& + img {
+					margin-top: 1em;
+				}
+			}
+		}
+		h1 {
+			margin-bottom: 1em;
+		}
+		p + p {
+			margin-top: 1em;
+		}
+		a.close {
+			display: block;
+			font-size: 2em;
+			font-weight: 400;
+			margin-bottom: 0.5em;
+			text-align: right;
+			width: 100%;
 		}
 	}
 }
@@ -57,11 +125,31 @@
 				}
 			}
 		}
-		section {
-			column-count: 3;
+		> section {
+			column-count: 2;
 			column-gap: 1em;
 			figure {
 
+			}
+		}
+		article {
+			a.close {
+				position: absolute;
+				top: 1rem;
+				right: 1rem;
+			}
+			section {
+				max-width: 99%;
+			}
+			div {
+				display: inline-block;
+				padding-left: 1.5em;
+				width: calc(60% - 1.25em);
+			}
+			figure {
+				display: inline-block;
+				margin-right: 1.5em;
+				max-width: 40%;
 			}
 		}
 	}
@@ -76,13 +164,29 @@
 				}
 			}
 		}
-		section {
-			column-count: 3;
+		> section {
+			column-count: 4;
 			column-gap: 1em;
 			margin-left: auto;
 			margin-right: auto;
-			max-width: 800px;
+		}
+		article {
+			a.close {
+				position: absolute;
+				top: 1rem;
+				right: 1rem;
+			}
+			section {
+				max-width: 800px;
+			}
+			div {
+				display: inline-block;
+				padding-left: 1.5em;
+				width: calc((100% / 3) * 2 - 1.25em);
+			}
 			figure {
+				display: inline-block;
+				max-width: calc(100% / 3);
 			}
 		}
 	}

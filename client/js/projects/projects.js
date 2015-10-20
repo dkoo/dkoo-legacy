@@ -1,8 +1,14 @@
-Template.projects.onRendered(function() {
-	document.documentElement.classList.add('projects');
+Template.projects.helpers({
 });
 
-Template.projects.helpers({
-	projects: function() {
+Template.projects.events({
+	'click section figure a': function(e) {
+		e.preventDefault();
+
+		Session.set('viewingProject', true);
+	},
+	'click #toolbar .new-project': function(e) {
+		Session.set('viewingProject', 'new');
+		Session.set('editingProject', true);
 	}
 });
