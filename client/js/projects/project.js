@@ -6,6 +6,9 @@ Template.project.helpers({
 
 Template.project.events({
 	'click a.close': function(e) {
+		e.preventDefault();
+		
 		Session.set('viewingProject', undefined);
+		Router.go('/projects');
 	}
 });

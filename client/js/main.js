@@ -12,6 +12,7 @@ Meteor.startup(function() {
 			}
 			if ( Session.get('viewingProject') ) {
 				Session.set('viewingProject', undefined);
+				Router.go('/projects');
 			}
 		}
 	});

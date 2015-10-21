@@ -3,7 +3,7 @@ Template.projects.helpers({
 
 Template.projects.events({
 	'click section figure a': function(e) {
-		e.preventDefault();
+		// e.preventDefault();
 
 		Session.set('viewingProject', true);
 	},

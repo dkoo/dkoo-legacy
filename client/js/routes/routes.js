@@ -27,6 +27,7 @@ kootroller = RouteController.extend({
 	},
 	// set the data context based on URL
 	data: function() {
+		console.log('dataing');
 		var currentPost = Session.get('currentPost'),
 			getPost,
 			subscription,
