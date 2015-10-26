@@ -8,7 +8,10 @@
 		</header>
 
 		<section>
-			<figure>
+			{{#each projects}}<figure>
+				<a href="/projects/{{slug}}"><img src="{{thumb}}" alt="{{title}}"></a>
+			</figure>{{/each}}
+			<!-- <figure>
 				<a href="/projects/project-name"><img src="http://placehold.it/600x900/ffffff/000000" alt="Placeholder image"></a>
 			</figure><figure>
 				<a href="/projects/project-name"><img src="http://placehold.it/600x600/ffffff/000000" alt="Placeholder image"></a>
@@ -24,7 +27,7 @@
 				<a href="/projects/project-name"><img src="http://placehold.it/600x600/ffffff/000000" alt="Placeholder image"></a>
 			</figure><figure>
 				<a href="/projects/project-name"><img src="http://placehold.it/600x900/ffffff/000000" alt="Placeholder image"></a>
-			</figure>
+			</figure> -->
 		</section>
 
 		{{> project}}

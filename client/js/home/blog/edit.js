@@ -49,7 +49,6 @@ Template.edit.events({
 		var post = Template.currentData() || undefined,
 			// fields = document.querySelectorAll('.edit-post form pre'),
 			field = e.target,
-			fieldName = field.getAttribute('data-name') || field.getAttribute('name'),
 			input;
 
 		if ( field.tagName.toLowerCase() === 'pre' ) {
@@ -79,7 +78,7 @@ Template.edit.events({
 			Session.set('edited', true);
 		}
 	},
-	'keyup textarea': function(e) {
+	'onchange textarea, keyup textarea': function(e) {
 		input = e.target.value;
 
 		if ( !input ) {

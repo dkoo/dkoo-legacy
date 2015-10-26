@@ -56,6 +56,9 @@
 	}
 	// expanded project view
 	article {
+		&.logged-in {
+			padding-bottom: 4em;
+		}
 		background-color: #f5f5f5;
 		box-sizing: border-box;
 		height: 100%;
@@ -91,6 +94,24 @@
 			box-sizing: border-box;
 			vertical-align: top;
 		}
+		h2 {
+			font-size: 12px;
+			font-weight: 400;
+			letter-spacing: 0.05em;
+			text-transform: uppercase;
+			&:not(:first-child) {
+				margin-top: 1.5em;
+			}
+		}
+		.action {
+			display: inline-block;
+			font-family: $display;
+			font-size: 12px;
+			letter-spacing: 0.05em;
+			margin-top: 1em;
+			margin-right: 1em;
+			text-transform: uppercase;
+		}
 		figure {
 			margin-bottom: 1.5em;
 			vertical-align: top;
@@ -104,8 +125,10 @@
 		h1 {
 			margin-bottom: 1em;
 		}
-		p + p {
-			margin-top: 1em;
+		p {
+			& + p {
+				margin-top: 1em;
+			}
 		}
 		a.close {
 			box-sizing: border-box;
@@ -144,7 +167,7 @@
 				right: 1rem;
 			}
 			section {
-				max-width: 99%;
+				min-width: 75%;
 			}
 			div {
 				display: inline-block;
@@ -182,7 +205,7 @@
 				right: 1rem;
 			}
 			section {
-				max-width: 99%;
+				min-width: 75%;
 			}
 			div {
 				display: inline-block;
@@ -221,6 +244,7 @@
 			}
 			section {
 				max-width: 960px;
+				min-width: 75%;
 			}
 			div {
 				display: inline-block;

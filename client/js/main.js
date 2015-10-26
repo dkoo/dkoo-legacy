@@ -1,6 +1,9 @@
 // init Posts collection
 Posts = new Mongo.Collection('posts');
 
+// init Projects collection
+Projects = new Mongo.Collection('projects');
+
 // startup functions
 Meteor.startup(function() {
 	Session.set('editing', false);
@@ -12,6 +15,7 @@ Meteor.startup(function() {
 			}
 			if ( Session.get('viewingProject') ) {
 				Session.set('viewingProject', undefined);
+				Session.set('editingProject', false);
 				Router.go('/projects');
 			}
 		}
