@@ -20,7 +20,7 @@ Template.projects.helpers({
 			Session.set('loading', false);
 		});
 
-		results = Projects.find();
+		results = Projects.find({}, { sort: { published: 1 } } );
 
 		return results.count() ? results : false;
 	}

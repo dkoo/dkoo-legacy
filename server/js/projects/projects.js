@@ -1,4 +1,7 @@
 Meteor.methods({
+	loading: function() {
+		return Session.get('loading');
+	},
 	editProject: function(projectId, input) {
 		check(projectId, String);
 

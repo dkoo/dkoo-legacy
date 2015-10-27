@@ -7,7 +7,7 @@ Template.editProject.onRendered(function() {
 	if ( !data ) {
 		data = {
 			_id: false
-		}
+		};
 	}
 
 	if ( data._id ) {
@@ -92,8 +92,6 @@ Template.editProject.events({
 	'submit .edit-project': function(e) {
 		e.preventDefault();
 
-		console.log('submitting');
-
 		// gather all the user input
 		var title = document.querySelector('h1 pre'),
 			published = document.querySelectorAll('h2 pre'),
@@ -144,7 +142,6 @@ Template.editProject.events({
 					console.log(err);
 				} else {
 					Session.set('editing', false);
-					console.log(response);
 					if ( input.slug || project._id === 'new' ) {
 						Router.go('/projects/');
 					}

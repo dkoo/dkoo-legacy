@@ -1,4 +1,8 @@
 <template name="projects">
+	{{#if loading}}
+		<div class="loading"></div>
+	{{/if}}
+
 	<main class="projects {{#if currentUser}}logged-in{{/if}}">
 		<header>
 			<h2>
