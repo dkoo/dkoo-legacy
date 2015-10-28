@@ -1,5 +1,5 @@
 <template name="projects">
-	{{#if projects}}
+	<!-- {{#if projects}} -->
 		<main class="projects {{#if currentUser}}logged-in{{/if}}">
 			<header>
 				<h2>
@@ -16,9 +16,9 @@
 
 			{{> project}}
 		</main>
-	{{else}}
-		<div class="loading"></div>
-	{{/if}}
+	<!-- {{else}} -->
+		<!-- <div class="loading"></div> -->
+	<!-- {{/if}} -->
 
 	{{#if currentUser}}
 		<nav id="toolbar">
