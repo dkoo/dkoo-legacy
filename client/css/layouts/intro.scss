@@ -11,6 +11,13 @@ section.intro {
 	div {
 		text-align: center;
 		width: 99%;
+		&.not-found {
+			box-sizing: border-box;
+			padding: 1em;
+			p + p {
+				margin-top: 1.5em;
+			}
+		}
 		h1 {
 			font-size: 2.75em;
 			font-weight: 400;

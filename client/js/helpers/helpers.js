@@ -13,3 +13,7 @@ Template.registerHelper('private', function() {
 Template.registerHelper('uri', function(tag) {
 	return '/blog?search=' + encodeURI(this).replace('#', '%23');
 });
+
+Template.registerHelper('loading', function(){
+	return Session.get('loading');
+});

@@ -43,3 +43,17 @@ Meteor.publish('posts', function (filter, options, search) {
 
 	return Posts.find( filter, options );
 });
+
+// init Projects collection
+Projects = new Mongo.Collection('projects');
+
+Meteor.publish('projects', function () {
+	var filter = {};
+
+	// double-check user status before publishing private documents
+	if ( !Meteor.dkoo.checkUser(this.userId) ) {
+		filter.status = 'public';
+	}
+
+	return Projects.find( filter );
+});

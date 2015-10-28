@@ -1,0 +1,38 @@
+<template name="editProject">
+	<form class="edit-project">
+		<figure>
+			<h2><pre contentEditable data-name="published-date" data-placeholder="MM/DD/YYYY"></pre> at <pre contentEditable data-name="published-time" data-placeholder="12:00 am"></pre></h2>
+
+			{{#each images}}
+					<img src="{{this}}" alt="">
+			{{/each}}
+			
+			{{#if newProject}}
+				<h2>Project Images</h2>
+				<textarea class="images" name="images" placeholder="(enter each URL on own line)"></textarea>
+			{{else}}
+				<h2>Add image</h2>
+				<input class="image" type="text" name="image" placeholder="Image URL"><a href="add-image" class="add-image">&plus;</a>
+			{{/if}}
+		</figure><div>
+			<h1>{{{projectTitle}}}</h1>
+
+			<textarea class="content" name="content" placeholder="Project description" value="{{#if content}}{{content}}{{/if}}"></textarea>
+
+			<h2>Thumbnail</h2>
+			<input class="thumb" type="text" name="thumb" placeholder="Thumbnail URL" value="{{#if slug}}{{thumb}}{{/if}}">
+
+			<h2>Slug</h2>
+			<input class="slug" name="slug" placeholder="Project slug" value="{{#if slug}}{{slug}}{{/if}}">
+
+			<h2>Publish Status</h2>
+			<select name="visibility">
+				<option value="public" selected="{{#if statusIs "public"}}true{{/if}}">Published</option>
+				<option value="private" selected="{{#if statusIs "private"}}true{{/if}}">Draft</option>
+			</select>
+			
+			<button class="save">Save</button>
+			<button class="cancel">Cancel</button>
+		</div>
+	</form>
+</template>

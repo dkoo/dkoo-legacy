@@ -1,0 +1,46 @@
+<template name="projects">
+	{{#if projects}}
+		<main class="projects {{#if currentUser}}logged-in{{/if}}">
+			<header>
+				<h2>
+					<a href="/">dkoo.net</a>
+					<a href="/blog">blog</a>
+				</h2>
+			</header>
+
+			<section>
+				{{#each projects}}<figure>
+					<a href="/projects/{{slug}}"><img src="{{thumb}}" alt="{{title}}"></a>
+				</figure>{{/each}}
+				<!-- <figure>
+					<a href="/projects/project-name"><img src="http://placehold.it/600x900/ffffff/000000" alt="Placeholder image"></a>
+				</figure><figure>
+					<a href="/projects/project-name"><img src="http://placehold.it/600x600/ffffff/000000" alt="Placeholder image"></a>
+				</figure><figure>
+					<a href="/projects/project-name"><img src="http://placehold.it/600x600/ffffff/000000" alt="Placeholder image"></a>
+				</figure><figure>
+					<a href="/projects/project-name"><img src="http://placehold.it/600x900/ffffff/000000" alt="Placeholder image"></a>
+				</figure><figure>
+					<a href="/projects/project-name"><img src="http://placehold.it/600x900/ffffff/000000" alt="Placeholder image"></a>
+				</figure><figure>
+					<a href="/projects/project-name"><img src="http://placehold.it/600x600/ffffff/000000" alt="Placeholder image"></a>
+				</figure><figure>
+					<a href="/projects/project-name"><img src="http://placehold.it/600x600/ffffff/000000" alt="Placeholder image"></a>
+				</figure><figure>
+					<a href="/projects/project-name"><img src="http://placehold.it/600x900/ffffff/000000" alt="Placeholder image"></a>
+				</figure> -->
+			</section>
+
+			{{> project}}
+
+			{{#if currentUser}}
+				<nav id="toolbar">
+					<a href="/projects/new" class="new-project">New Project</a>
+					<a href="/" class="logout">Log out</a>
+				</nav>
+			{{/if}}
+		</main>
+	{{else}}
+		<div class="loading"></div>
+	{{/if}}
+</template>
