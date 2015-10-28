@@ -35,5 +35,8 @@ Template.projects.events({
 	'click #toolbar .new-project': function(e) {
 		Session.set('viewingProject', 'new');
 		Session.set('editingProject', true);
+	},
+	'click #toolbar .logout': function(e) {
+		Meteor.logout();
 	}
 });
