@@ -12,35 +12,18 @@
 				{{#each projects}}<figure>
 					<a href="/projects/{{slug}}"><img src="{{thumb}}" alt="{{title}}"></a>
 				</figure>{{/each}}
-				<!-- <figure>
-					<a href="/projects/project-name"><img src="http://placehold.it/600x900/ffffff/000000" alt="Placeholder image"></a>
-				</figure><figure>
-					<a href="/projects/project-name"><img src="http://placehold.it/600x600/ffffff/000000" alt="Placeholder image"></a>
-				</figure><figure>
-					<a href="/projects/project-name"><img src="http://placehold.it/600x600/ffffff/000000" alt="Placeholder image"></a>
-				</figure><figure>
-					<a href="/projects/project-name"><img src="http://placehold.it/600x900/ffffff/000000" alt="Placeholder image"></a>
-				</figure><figure>
-					<a href="/projects/project-name"><img src="http://placehold.it/600x900/ffffff/000000" alt="Placeholder image"></a>
-				</figure><figure>
-					<a href="/projects/project-name"><img src="http://placehold.it/600x600/ffffff/000000" alt="Placeholder image"></a>
-				</figure><figure>
-					<a href="/projects/project-name"><img src="http://placehold.it/600x600/ffffff/000000" alt="Placeholder image"></a>
-				</figure><figure>
-					<a href="/projects/project-name"><img src="http://placehold.it/600x900/ffffff/000000" alt="Placeholder image"></a>
-				</figure> -->
 			</section>
 
 			{{> project}}
-
-			{{#if currentUser}}
-				<nav id="toolbar">
-					<a href="/projects/new" class="new-project">New Project</a>
-					<a href="/" class="logout">Log out</a>
-				</nav>
-			{{/if}}
 		</main>
 	{{else}}
 		<div class="loading"></div>
+	{{/if}}
+
+	{{#if currentUser}}
+		<nav id="toolbar">
+			<a href="/projects/new" class="new-project">New Project</a>
+			<a href="/projects" class="logout">Log out</a>
+		</nav>
 	{{/if}}
 </template>
