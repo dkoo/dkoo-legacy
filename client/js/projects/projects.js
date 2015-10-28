@@ -10,7 +10,7 @@ Template.projects.helpers({
 			filter.published = { $lte: now };
 		}
 
-		Session.set('loading', true);
+		// Session.set('loading', true);
 
 		// setup the subscription
 		Meteor.subscribe('projects', function(err, response) {

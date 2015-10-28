@@ -3,9 +3,6 @@ Template.home.onRendered(function() {
 });
 
 Template.home.helpers({
-	loading: function() {
-		return Session.get('loading');
-	},
 	modalExists: function() {
 		return Session.get('modal');
 	},

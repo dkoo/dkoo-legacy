@@ -1,7 +1,3 @@
-Template.project.onRendered(function() {
-	Session.set('loading', true);
-});
-
 Template.project.helpers({
 	viewingProject: function() {
 		return Session.get('viewingProject');
