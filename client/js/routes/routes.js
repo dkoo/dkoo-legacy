@@ -5,6 +5,9 @@ kootroller = RouteController.extend({
 			post,
 			data = this.data();
 
+		Session.set('viewingProject', undefined);
+		Session.set('editingProject', undefined);
+
 		if ( this.url === '/' ) {
 			Session.set('viewingBlog', false);
 		} else {
