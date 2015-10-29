@@ -29,11 +29,7 @@
 	> section {
 		break-inside: avoid;
 		text-align: center;
-		transition: transform $transition, opacity $transition;
-		&.preload {
-			opacity: 0;
-			transform: translateY(20%);
-		}
+		transition: transform $transition;
 		figure {
 			box-sizing: border-box;
 			display: inline-block;
@@ -42,10 +38,8 @@
 			a {
 				backface-visibility: hidden;
 				display: block;
-				opacity: 0.5;
-				transition: opacity $transition, transform $transition;
+				transition: transform $transition;
 				&:hover {
-					opacity: 1;
 					transform: scale(1.05);
 				}
 			}
