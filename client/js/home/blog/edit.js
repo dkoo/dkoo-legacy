@@ -31,9 +31,6 @@ Template.edit.helpers({
 	},
 	edited: function() {
 		return Session.get('edited');
-	},
-	statusIs: function(status) {
-		return this.status === status ? true : false;
 	}
 });
 

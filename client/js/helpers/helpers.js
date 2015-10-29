@@ -17,3 +17,7 @@ Template.registerHelper('uri', function(tag) {
 Template.registerHelper('loading', function(){
 	return Session.get('loading');
 });
+
+Template.registerHelper('statusIs', function(status) {
+	return this.status === status ? true : false;
+});

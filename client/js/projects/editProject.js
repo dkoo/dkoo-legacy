@@ -38,9 +38,6 @@ Template.editProject.helpers({
 			HTML = '<pre contentEditable class="title" data-name="title" data-placeholder="Project Title">' + title + '</pre>';
 
 		return HTML;
-	},
-	statusIs: function(status) {
-		return false;
 	}
 });
 
