@@ -38,8 +38,10 @@
 			a {
 				backface-visibility: hidden;
 				display: block;
-				transition: transform $transition;
+				opacity: 0.75;
+				transition: opacity $transition, transform $transition;
 				&:hover {
+					opacity: 1;
 					transform: scale(1.05);
 				}
 			}
