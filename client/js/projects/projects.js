@@ -20,7 +20,7 @@ Template.projects.helpers({
 			Session.set('loading', false);
 		});
 
-		results = Projects.find({}, { sort: { published: 1 } } );
+		results = Projects.find( { slug: { $not: 'about' } }, { sort: { published: 1 } } );
 
 		return results.count() ? results : false;
 	}
