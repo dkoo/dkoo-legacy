@@ -23,6 +23,7 @@ projectroller = RouteController.extend({
 	data: function() {
 		var currentProject = Session.get('currentProject'),
 			getProject,
+			aboutPage,
 			subscription,
 			project;
 
@@ -53,6 +54,16 @@ projectroller = RouteController.extend({
 					return project;
 				}
 			}
+		} else if ( this.url === '/about' ) {
+		// show the project with 'about' slug as the 'About' page contents
+			Session.set('viewingProject', true);
+			Session.set('editingProject', false);
+
+			aboutPage = Projects.findOne( { slug: 'about' } );
+
+			if ( aboutPage ) {
+				return aboutPage;
+			}
 		} else {
 		// if viewing all projects
 			Session.set('viewingProject', undefined);
@@ -69,6 +80,12 @@ projectroller = RouteController.extend({
 		if ( this.url === '/projects' ) {
 			SEO.set({
 				title: 'dkoo dot net → projects'
+			});
+
+			return;
+		} else if ( this.url === '/about' ) {
+			SEO.set({
+				title: 'dkoo dot net → about'
 			});
 
 			return;
@@ -96,3 +113,5 @@ projectroller = RouteController.extend({
 Router.route('/projects', { controller: projectroller } );
 
 Router.route('/projects/:project', { controller: projectroller } );
+
+Router.route('/about', { controller: projectroller } );
