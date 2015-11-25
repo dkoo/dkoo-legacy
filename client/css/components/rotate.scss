@@ -7,13 +7,15 @@
 		backface-visibility: hidden;
 		box-sizing: border-box;
 		position: relative;
-		transition: transform 0.75s cubic-bezier(0.5, 0.25, 0.25, 0.5), background-color 0.75s cubic-bezier(0.25, 0.5, 0.5, 0.25), color 0.75s cubic-bezier(0.25, 0.5, 0.5, 0.25);
+		transition: transform 0.75s cubic-bezier(0.5, 0.25, 0.25, 0.5), background-color 0.75s cubic-bezier(0.25, 0.5, 0.5, 0.25), color 0.75s cubic-bezier(0.25, 0.5, 0.5, 0.25), opacity 0.75s cubic-bezier(0.25, 0.5, 0.5, 0.25);
 		&.intro {
 			background-color: white;
 			transform-origin: 0 100%;
 			text-align: center;
 		}
 		&.blog {
+			opacity: 0;
+			pointer-events: none;
 			transform: rotateX(-90deg);
 			transform-origin: 0 0;
 		}
@@ -42,9 +44,13 @@
 	}
 	&.blog {
 		.intro {
+			opacity: 0;
+			pointer-events: none;
 			transform: translateY(-100%) rotateX(90deg);
 		}
 		.blog {
+			opacity: 1;
+			pointer-events: all;
 			transform: rotateX(0deg) translateY(-100%);
 		}
 	}
