@@ -1,7 +1,4 @@
 Template.project.helpers({
-	viewingProject: function() {
-		return Session.get('viewingProject');
-	},
 	editingProject: function() {
 		return Session.get('editingProject');
 	}

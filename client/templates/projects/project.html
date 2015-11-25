@@ -1,5 +1,5 @@
 <template name="project">
-	<article class="{{#if viewingProject}}active{{/if}} {{#if currentUser}}logged-in{{/if}}">
+	<article class="{{#if currentUser}}logged-in{{/if}}">
 		<a href="#" class="close">&times;</a>
 		<section>{{#if editingProject}}{{> editProject}}{{else}}<figure>
 		{{#each images}}
