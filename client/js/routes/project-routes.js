@@ -21,14 +21,14 @@ projectroller = RouteController.extend({
 		this.data();
 	},
 	data: function() {
-		var currentProject = Session.get('currentProject'),
-			getProject,
-			aboutPage,
-			subscription,
-			project;
+		var subscription = Meteor.subscribe('projects');
 
 		if ( this.params.project ) {
 		// if viewing a single post page
+			var currentProject = Session.get('currentProject'),
+				getProject,
+				project;
+
 			Session.set('viewingProject', true);
 
 			// if creating a new project
@@ -40,8 +40,6 @@ projectroller = RouteController.extend({
 				} else {
 					getProject = { slug: this.params.project };
 				}
-
-				subscription = Meteor.subscribe('projects');
 
 				if ( subscription.ready() ) {
 					project = Projects.findOne( getProject );
@@ -59,10 +57,16 @@ projectroller = RouteController.extend({
 			Session.set('viewingProject', true);
 			Session.set('editingProject', false);
 
-			aboutPage = Projects.findOne( { slug: 'about' } );
+			if ( subscription.ready() ) {
+				var aboutPage = Projects.findOne( { slug: 'about' } );
 
-			if ( aboutPage ) {
-				return aboutPage;
+				Session.set('loading', false);
+
+				if ( !aboutPage ) {
+					return false;
+				} else {
+					return aboutPage;
+				}
 			}
 		} else {
 		// if viewing all projects
