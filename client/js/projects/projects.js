@@ -1,7 +1,3 @@
-Template.projects.onRendered(function() {
-	document.documentElement.classList.add('projects');
-});
-
 Template.projects.helpers({
 	viewingProject: function() {
 		return Session.get('viewingProject');
