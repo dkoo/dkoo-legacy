@@ -28,9 +28,8 @@
 	// projects masonry grid
 	> section {
 		break-inside: avoid;
-		opacity: 1;
 		text-align: center;
-		transition: opacity $transition, transform $transition;
+		transition: transform $transition;
 		figure {
 			box-sizing: border-box;
 			display: inline-block;
@@ -63,10 +62,10 @@
 		opacity: 0;
 		overflow-y: auto;
 		pointer-events: none;
-		position: fixed;
+		position: absolute;
 		text-align: center;
 		top: 0;
-		transform: scale(0);
+		transform: scale(0), translate3d(0, 0, 0);
 		transition: opacity $transition, transform $transition;
 		width: 100%;
 		&::after,
@@ -138,7 +137,6 @@
 	}
 	&.active {
 		> section {
-			opacity: 0;
 			pointer-events: none;
 		}
 		article {
