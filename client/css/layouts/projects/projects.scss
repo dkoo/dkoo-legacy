@@ -4,7 +4,6 @@
 	height: 100%;
 	margin: auto;
 	min-height: 101%;
-	// -webkit-overflow-scrolling: touch;
 	overflow-y: auto;
 	padding: 1em;
 	&.logged-in {
@@ -31,6 +30,7 @@
 		break-inside: avoid;
 		text-align: center;
 		transition: transform $transition;
+		-webkit-overflow-scrolling: touch;
 		figure {
 			box-sizing: border-box;
 			display: inline-block;
@@ -69,6 +69,7 @@
 		transform: scale(0);
 		transition: opacity $transition, transform $transition;
 		width: 100%;
+		-webkit-overflow-scrolling: touch;
 		&::after,
 		section {
 			display: inline-block;
