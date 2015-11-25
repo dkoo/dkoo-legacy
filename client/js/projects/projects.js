@@ -1,4 +1,7 @@
 Template.projects.helpers({
+	viewingProject: function() {
+		return Session.get('viewingProject');
+	},
 	projects: function() {
 		var filter = {},
 			now = Session.get('now') || Date.now(),

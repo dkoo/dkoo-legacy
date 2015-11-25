@@ -28,8 +28,9 @@
 	// projects masonry grid
 	> section {
 		break-inside: avoid;
+		opacity: 1;
 		text-align: center;
-		transition: transform $transition;
+		transition: opacity $transition, transform $transition;
 		figure {
 			box-sizing: border-box;
 			display: inline-block;
@@ -61,17 +62,13 @@
 		left: 0;
 		opacity: 0;
 		overflow-y: auto;
+		pointer-events: none;
 		position: fixed;
 		text-align: center;
 		top: 0;
 		transform: scale(0);
 		transition: opacity $transition, transform $transition;
 		width: 100%;
-		&.active {
-			opacity: 1;
-			transform: none;
-			z-index: 10;
-		}
 		&::after,
 		section {
 			display: inline-block;
@@ -137,6 +134,18 @@
 			padding-right: 0.5em;
 			text-align: right;
 			width: 100%;
+		}
+	}
+	&.active {
+		> section {
+			opacity: 0;
+			pointer-events: none;
+		}
+		article {
+			opacity: 1;
+			pointer-events: all;
+			transform: none;
+			z-index: 10;
 		}
 	}
 }

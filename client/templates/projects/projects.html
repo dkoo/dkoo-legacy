@@ -1,6 +1,6 @@
 <template name="projects">
 	{{#if projects}}
-		<main class="projects {{#if currentUser}}logged-in{{/if}}">
+		<main class="projects {{#if currentUser}}logged-in{{/if}} {{#if viewingProject}}active{{/if}}">
 			<header>
 				<h2>
 					<a href="/">dkoo.net</a>
