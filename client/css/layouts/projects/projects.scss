@@ -31,6 +31,7 @@
 		break-inside: avoid;
 		text-align: center;
 		transition: transform $transition;
+		-webkit-transform: translate3d(0, 0, 0);
 		figure {
 			box-sizing: border-box;
 			display: inline-block;
@@ -69,7 +70,7 @@
 		transform: scale(0);
 		transition: opacity $transition, transform $transition;
 		width: 100%;
-		z-index: -1;
+		-webkit-transform: translate3d(0, 0, 0);
 		&::after,
 		section {
 			display: inline-block;
@@ -145,7 +146,6 @@
 			opacity: 1;
 			pointer-events: all;
 			transform: none;
-			z-index: 2;
 		}
 	}
 }
