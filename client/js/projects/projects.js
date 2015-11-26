@@ -1,3 +1,23 @@
+function scroll(project) {
+	if ( project ) {
+		document.documentElement.classList.add('overflow');
+		if ( document.body ) {
+			var project = document.querySelector('.project');
+		}
+	} else {
+		document.documentElement.classList.remove('overflow');
+	}
+}
+
+Tracker.autorun(function () {
+	scroll(Session.get('viewingProject'));
+});
+
+Template.projects.onRendered(function() {
+	document.documentElement.classList.add('no-scroll');
+	console.log(Session.get('viewingProject'));
+});
+
 Template.projects.helpers({
 	viewingProject: function() {
 		return Session.get('viewingProject');

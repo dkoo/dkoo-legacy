@@ -1,5 +1,5 @@
 Template.home.onRendered(function() {
-	document.documentElement.classList.remove('projects');
+	document.documentElement.classList.remove('no-scroll');
 });
 
 Template.home.helpers({
