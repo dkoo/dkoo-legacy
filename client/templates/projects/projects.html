@@ -3,7 +3,7 @@
 		<main class="projects {{#if currentUser}}logged-in{{/if}} {{#if viewingProject}}active{{/if}}">
 			<header>
 				<h2>
-					<a href="/">dkoo.net</a>
+					<a class="logo" href="/">dkoo</a>
 					<a href="/blog">blog</a>
 					<a href="/about">about</a>
 				</h2>
@@ -11,7 +11,12 @@
 
 			<section>
 				{{#each projects}}<figure>
-					<a href="/projects/{{slug}}"><img src="{{thumb}}" alt="{{title}}"></a>
+					<a href="/projects/{{slug}}">
+						<img src="{{thumb}}" alt="{{title}}">
+						<aside>
+							<h3>{{title}}</h3>
+						</aside>
+					</a>
 				</figure>{{/each}}
 			</section>
 		</main>
