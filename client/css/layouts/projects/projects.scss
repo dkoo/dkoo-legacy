@@ -154,6 +154,10 @@ main.projects {
 	}
 	ul {
 		font-style: italic;
+		li {
+			margin-left: 1em;
+			text-indent: -1em;
+		}
 	}
 	.action {
 		display: inline-block;
