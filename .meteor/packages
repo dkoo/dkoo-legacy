@@ -12,7 +12,6 @@ u2622:persistent-session
 spiderable
 gadicohen:sitemaps
 manuelschoebel:ms-seo
-standard-minifiers
 meteor-base
 mobile-experience
 mongo
@@ -27,3 +26,5 @@ ejson
 spacebars
 check
 chuangbo:marked
+fourseven:scss
+seba:minifiers-autoprefixer

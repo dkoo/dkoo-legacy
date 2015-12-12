@@ -16,21 +16,21 @@
 
 
 // helpers
-@import "components/rotate";
+@import "components/_rotate";
 
 
 // main layout styles
-@import "layouts/main";
-@import "layouts/admin";
-@import "layouts/intro";
+@import "layouts/_main";
+@import "layouts/_admin";
+@import "layouts/_intro";
 
 // blog styles
-@import "layouts/blog/blog";
-@import "layouts/blog/edit";
-@import "layouts/blog/toolbar";
-@import "layouts/blog/search";
-@import "layouts/blog/modal";
+@import "layouts/blog/_blog";
+@import "layouts/blog/_edit";
+@import "layouts/blog/_toolbar";
+@import "layouts/blog/_search";
+@import "layouts/blog/_modal";
 
 // projects styles
-@import "layouts/projects/projects";
-@import "layouts/projects/editProjects";
+@import "layouts/projects/_projects";
+@import "layouts/projects/_editProjects";
