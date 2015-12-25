@@ -9,8 +9,8 @@ section.intro {
 		height: 100%;
 	}
 	div {
+		max-width: 98%;
 		text-align: center;
-		width: 99%;
 		&.not-found {
 			box-sizing: border-box;
 			padding: 1em;
