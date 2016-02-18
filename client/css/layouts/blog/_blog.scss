@@ -1,8 +1,8 @@
 section.blog {
-	/* autoprefixer: off */
 	background-color: #1e2124;
-	perspective: 2500px;
 	color: white;
+	perspective: 2500px;
+	-webkit-perspective: none;
 	& > div {
 		/* autoprefixer: on */
 		padding-bottom: 3em;
