@@ -227,9 +227,6 @@ main.projects {
 			top: 1rem;
 			right: 1rem;
 		}
-		section {
-			min-width: 75%;
-		}
 		div {
 			display: inline-block;
 			width: calc(60% - 1.75em);
@@ -264,9 +261,6 @@ main.projects {
 			position: absolute;
 			top: 1rem;
 			right: 1rem;
-		}
-		section {
-			min-width: 75%;
 		}
 		div {
 			display: inline-block;
@@ -304,8 +298,7 @@ main.projects {
 			right: 1rem;
 		}
 		section {
-			max-width: 960px;
-			min-width: 75%;
+			max-width: 1024px;
 		}
 		div {
 			display: inline-block;
