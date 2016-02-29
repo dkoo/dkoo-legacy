@@ -20,7 +20,7 @@ kootroller = RouteController.extend({
 		}
 
 		if ( data === false ) {
-			this.render('notFound');
+			Router.go('/blog');
 		} else {
 			this.render('home', data);
 		}

@@ -1,6 +1,4 @@
-// init Posts collection
-Posts = new Mongo.Collection('posts');
-
+// update current time every minute
 Meteor.startup(function() {
 	Meteor.setInterval(function() {
 		Meteor.now = Date.now();
@@ -43,9 +41,6 @@ Meteor.publish('posts', function (filter, options, search) {
 
 	return Posts.find( filter, options );
 });
-
-// init Projects collection
-Projects = new Mongo.Collection('projects');
 
 Meteor.publish('projects', function () {
 	var filter = {};

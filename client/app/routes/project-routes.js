@@ -12,7 +12,7 @@ projectroller = RouteController.extend({
 		}
 
 		if ( data === false ) {
-			this.render('notFound');
+			Router.go('/projects');
 		} else {
 			this.render('projects', data);
 		}
