@@ -15,6 +15,7 @@ Template.search.events({
 		if ( e.keyCode === 27 ) {
 			Session.set('searching', false);
 		} else if ( e.keyCode === 13 ) {
+			Session.set('filter', e.target.value);
 			e.target.blur();
 		}
 	},
