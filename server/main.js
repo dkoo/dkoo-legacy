@@ -40,8 +40,6 @@ Meteor.publish('posts', function (filter, options, search) {
 		];
 	}
 
-	console.log(Posts.find( filter, options ).fetch());
-
 	return Posts.find( filter, options );
 });
 

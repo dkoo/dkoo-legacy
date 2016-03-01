@@ -11,7 +11,7 @@ Tracker.autorun(function () {
 });
 
 Template.projects.onRendered(function() {
-	// document.documentElement.classList.add('no-scroll');
+	document.documentElement.classList.add('no-scroll');
 });
 
 Template.projects.helpers({
