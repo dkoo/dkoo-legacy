@@ -54,8 +54,11 @@ Template.projects.helpers({
 			if ( slug === 'new' ) {
 				Session.set('editingProject', true);
 				return {};
+			} else {
+				if ( !project._id ) {
+					FlowRouter.go('/projects');
+				}
 			}
-
 		} else {
 			project = {};
 		}

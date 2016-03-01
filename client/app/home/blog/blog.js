@@ -28,16 +28,16 @@ Template.blog.helpers({
 			filter.published = { $lte: now };
 		}
 
+		Session.set('loading', true);
 		// setup the subscription
 		Meteor.subscribe('posts', filter, options, search, function(err, response) {
 			if ( err ) {
 				console.log(err);
 			}
-			Session.set('loading', false);
 		});
 
 		results = Posts.find( filter, options );
-
+		Session.set('loading', false);
 		return results.count() ? results : false;
 	},
 	excerpt: function() {
@@ -78,7 +78,9 @@ Template.blog.helpers({
 			Session.set('editing', true);
 			return {};
 		} else {
-			// FlowRouter.go('/blog');
+			if ( !FlowRouter.getQueryParam('search') ) {
+				FlowRouter.go('/blog');
+			}
 		}
 	}
 });
