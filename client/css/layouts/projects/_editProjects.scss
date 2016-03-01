@@ -35,3 +35,12 @@
 		}
 	}
 }
+
+
+// desktop styles
+
+@media #{$large} {
+	.project textarea.content {
+		min-width: 500px;
+	}
+}

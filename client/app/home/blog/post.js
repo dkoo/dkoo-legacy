@@ -1,7 +1,3 @@
-Template.post.onRendered(function() {
-	Session.set('loading', true);
-});
-
 Template.post.helpers({
 	editing: function() {
 		return Session.get('editing');
@@ -16,7 +12,7 @@ Template.post.events({
 	'click .delete': function(e) {
 		e.preventDefault();
 		Meteor.call('deletePost', this._id);
-		Router.go('/blog');
+		FlowRouter.go('/blog');
 	},
 	'click .content img': function(e) {
 		var img = {

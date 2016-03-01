@@ -11,7 +11,7 @@ Tracker.autorun(function () {
 });
 
 Template.projects.onRendered(function() {
-	document.documentElement.classList.add('no-scroll');
+	// document.documentElement.classList.add('no-scroll');
 });
 
 Template.projects.helpers({
@@ -29,7 +29,7 @@ Template.projects.helpers({
 			filter.published = { $lte: now };
 		}
 
-		// Session.set('loading', true);
+		Session.set('loading', true);
 
 		// setup the subscription
 		Meteor.subscribe('projects', function(err, response) {
@@ -42,6 +42,25 @@ Template.projects.helpers({
 		results = Projects.find( { slug: { $not: 'about' } }, { sort: { published: 1 } } );
 
 		return results.count() ? results : false;
+	},
+	thisProject: function() {
+		var slug = FlowRouter.getParam('project') || Session.get('project'),
+			project;
+
+		if ( slug ) {
+			Session.set('project', slug);
+			project = Projects.findOne( { slug: slug } ) || {};
+
+			if ( slug === 'new' ) {
+				Session.set('editingProject', true);
+				return {};
+			}
+
+		} else {
+			project = {};
+		}
+
+		return project;
 	}
 });
 

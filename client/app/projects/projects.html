@@ -1,29 +1,29 @@
 <template name="projects">
-	{{#if projects}}
-		<main class="projects {{#if currentUser}}logged-in{{/if}} {{#if viewingProject}}active{{/if}}">
-			<header>
-				<h2>
-					<a class="logo" href="/">dkoo</a>
-					<a href="/blog">blog</a>
-					<a href="/about">about</a>
-				</h2>
-			</header>
+	<main class="projects {{#if currentUser}}logged-in{{/if}} {{#if viewingProject}}active{{/if}}">
+		<header>
+			<h2>
+				<a class="logo" href="/">dkoo</a>
+				<a href="/blog">blog</a>
+				<a href="/about">about</a>
+			</h2>
+		</header>
 
-			<section>
-				{{#each projects}}<figure>
-					<a href="/projects/{{slug}}">
-						<img src="{{thumb}}" alt="{{title}}">
-						<aside>
-							<h3>{{title}}</h3>
-						</aside>
-					</a>
-				</figure>{{/each}}
-			</section>
-		</main>
-		{{> project}}
-	{{else}}
-		<div class="loading"></div>
-	{{/if}}
+		<section>
+			{{#each projects}}<figure>
+				<a href="/projects/{{slug}}">
+					<img src="{{thumb}}" alt="{{title}}">
+					<aside>
+						<h3>{{title}}</h3>
+					</aside>
+				</a>
+			</figure>{{/each}}
+		</section>
+	</main>
+	<article class="project {{#if viewingProject}}active{{/if}} {{#if currentUser}}logged-in{{/if}}">
+		{{#with thisProject}}
+			{{> project}}
+		{{/with}}
+	</article>
 
 	{{#if currentUser}}
 		<nav id="toolbar">

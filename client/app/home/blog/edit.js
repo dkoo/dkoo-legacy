@@ -38,7 +38,7 @@ Template.edit.events({
 	'click .cancel': function(e) {
 		e.preventDefault();
 		if ( Session.get('editing') === true ) {
-			Router.go('/blog');
+			FlowRouter.go('/blog');
 		}
 		Session.set('editing', false);
 	},
@@ -156,7 +156,7 @@ Template.edit.events({
 				} else {
 					Session.set('editing', false);
 					if ( input.slug || post._id === 'new' ) {
-						Router.go('/blog/');
+						FlowRouter.go('/blog/');
 					}
 				}
 			});

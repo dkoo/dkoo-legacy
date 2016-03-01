@@ -79,7 +79,7 @@ section.blog {
 	article {
 		box-sizing: border-box;
 		margin: auto;
-		max-width: 780px;
+		max-width: 960px;
 		padding: 1.5em;
 		position: relative;
 		transition: opacity 0.5s ease-in-out;
@@ -101,7 +101,7 @@ section.blog {
 			}
 		}
 		h1 {
-			font-size: 1.5em;
+			font-size: 1.25em;
 			letter-spacing: 0.05em;
 		}
 		h2 {
@@ -118,7 +118,7 @@ section.blog {
 			margin-top: 0.5em;
 		}
 		p {
-			line-height: 1.65em;
+			line-height: 1.5em;
 			&:not(:first-child) {
 				margin-top: 1em;
 			}
@@ -184,7 +184,8 @@ section.blog {
 				}
 			}
 			blockquote {
-				font-size: 14px;
+				border-left: 3px solid #eee;
+				font-size: 0.875em;
 				line-height: 1.65em;
 				margin: 1em 0;
 				padding: 0.25em 1em;

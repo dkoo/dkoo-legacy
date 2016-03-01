@@ -34,6 +34,7 @@ Meteor.publish('posts', function (filter, options, search) {
 		filter['$or'] = [
 			{ title: { $regex: new RegExp('(?=.*' + search + ').*', 'i') } },
 			{ content: { $regex: new RegExp('(?=.*' + search + ').*' + '.*', 'i') } },
+			{ excerpt: { $regex: new RegExp('(?=.*' + search + ').*' + '.*', 'i') } },
 			{ tags: { $regex: new RegExp('(?=.*' + search + ').*' + '.*', 'i') } },
 			{ published: { $gte: Date.parse(search), $lte: Date.parse(search) + 86400000 } } // date queries should find all posts within a 24-hour period
 		];

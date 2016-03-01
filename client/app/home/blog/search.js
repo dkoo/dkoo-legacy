@@ -33,6 +33,6 @@ Template.search.events({
 
 		Session.set('searching', false);
 		Session.set('filter', '');
-		Router.go('/blog');
+		FlowRouter.go('/blog');
 	}
 });

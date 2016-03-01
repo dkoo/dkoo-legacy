@@ -44,16 +44,16 @@ Template.editProject.helpers({
 Template.editProject.events({
 	'click .save': function(e) {
 		Session.set('editingProject', false);
-		if ( !this._id ) {
-			Router.go('/projects');
-		}
+		// if ( !this._id ) {
+		// 	FlowRouter.go('/projects');
+		// }
 	},
 	'click .cancel': function(e) {
 		e.preventDefault();
 		Session.set('editingProject', false);
 		if ( !this._id ) {
 			Session.set('viewingProject', false);
-			Router.go('/projects');
+			FlowRouter.go('/projects');
 		}
 	},
 	'onchange textarea, keyup textarea': function(e) {
@@ -140,7 +140,7 @@ Template.editProject.events({
 				} else {
 					Session.set('editing', false);
 					if ( input.slug || project._id === 'new' ) {
-						Router.go('/projects/');
+						FlowRouter.go('/projects/');
 					}
 				}
 			});

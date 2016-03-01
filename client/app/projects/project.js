@@ -1,7 +1,4 @@
 Template.project.helpers({
-	viewingProject: function() {
-		return Session.get('viewingProject');
-	},
 	editingProject: function() {
 		return Session.get('editingProject');
 	}
@@ -13,7 +10,7 @@ Template.project.events({
 
 		Session.set('viewingProject', undefined);
 		Session.set('editingProject', false);
-		Router.go('/projects');
+		FlowRouter.go('/projects');
 	},
 	'click a.action': function(e) {
 		e.preventDefault();
@@ -21,7 +18,7 @@ Template.project.events({
 	'click .delete': function(e) {
 		e.preventDefault();
 		Meteor.call('deleteProject', this._id);
-		Router.go('/projects');
+		FlowRouter.go('/projects');
 	},
 	'click a.edit': function(e) {
 		Session.set('editingProject', true);

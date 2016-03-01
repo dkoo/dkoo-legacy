@@ -36,9 +36,12 @@ Template.blog.helpers({
 			Session.set('loading', false);
 		});
 
-		results = Posts.find( filter, { sort: { published: -1 } } );
+		results = Posts.find( filter, options );
 
 		return results.count() ? results : false;
+	},
+	excerpt: function() {
+		return Meteor.utils.excerpt(this);
 	},
 	more: function() {
 		var limit = Session.get('subLimit') || 10,
@@ -53,6 +56,30 @@ Template.blog.helpers({
 	},
 	searching: function() {
 		return Session.get('searching');
+	},
+	thisPost: function() {
+		var slug = FlowRouter.getParam('slug') || Session.get('thisPost'),
+			post = Posts.findOne({slug: slug});
+
+		if ( !post ) {
+			Meteor.subscribe('posts', { slug: slug }, {}, '', function(err, response) {
+				if ( err ) {
+					console.log(error);
+				}
+				Session.set('loading', false);
+			});
+			post = Posts.findOne({ slug: slug });
+		}
+
+		if ( !!post ) {
+			Session.set('thisPost', slug);
+			return post;
+		} else if ( FlowRouter.getParam('slug') === 'new') {
+			Session.set('editing', true);
+			return {};
+		} else {
+			// FlowRouter.go('/blog');
+		}
 	}
 });
 
@@ -78,7 +105,7 @@ Template.blog.events({
 		if ( Session.get('searching') ) {
 			Session.set('searching', false);
 			Session.set('filter', '');
-			Router.go('/blog');
+			FlowRouter.go('/blog');
 		} else {
 			Session.set('searching', true);
 		}
@@ -92,5 +119,12 @@ Template.blog.events({
 			e.currentTarget.scrollTop = e.currentTarget.scrollHeight - e.currentTarget.clientHeight - 1;
 		}
 		e.stopPropagation();
+	},
+	'click .delete': function(e) {
+		e.preventDefault();
+		Meteor.call('deletePost', this._id);
+		var blog = document.querySelector('section.blog');
+
+		blog.classList.remove('post');
 	}
 });

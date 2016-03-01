@@ -1,8 +1,8 @@
 body {
 	font-family: $serif;
-	font-size: 16px;
+	font-size: 18px;
 	font-weight: 400;
-	line-height: 1.375em;
+	line-height: 1.5em;
 }
 
 a {
@@ -10,6 +10,10 @@ a {
 	&:hover {
 		color: #C5D5E4;
 	}
+}
+#__blaze-root {
+	height: 100%;
+	overflow-y: hidden;
 }
 
 .container {

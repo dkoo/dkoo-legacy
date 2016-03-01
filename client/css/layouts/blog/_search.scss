@@ -1,7 +1,7 @@
 section.blog {
 	nav.search {
 		margin: auto;
-		max-width: 800px;
+		max-width: 960px;
 		position: relative;
 		a.close {
 			font-size: 20px;
@@ -18,10 +18,11 @@ section.blog {
 	input.search {
 		background-color: transparent;
 		border: none;
-		display: block;
-		padding-right: 1.5em;
 		color: white;
+		display: block;
 		font-size: 2em;
+		font-style: italic;
+		padding-right: 1.5em;
 		&::placeholder {
 			color: #6e7984;
 		}

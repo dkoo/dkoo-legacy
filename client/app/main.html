@@ -1,11 +1,11 @@
-<head>
-	<title>dkoo dot net</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-</head>
-
-<body>
+<template name="main">
 	{{#if loading}}
 		<div class="loading"></div>
 	{{/if}}
 
-</body>
+	{{#if modalExists}}
+		{{> modal}}
+	{{/if}}
+	
+	{{> Template.dynamic template=content}}
+</template>

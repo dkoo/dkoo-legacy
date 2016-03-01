@@ -20,7 +20,7 @@ Template.admin.helpers({
 Template.admin.events({
 	'click .signup': function(e) {
 		e.preventDefault();
-		Router.go('/register');
+		FlowRouter.go('/register');
 	},
 	'click .reset': function(e) {
 		e.preventDefault();
@@ -93,7 +93,7 @@ Template.admin.events({
 				} else {
 					// successful login
 					console.log('logging in');
-					Router.go('/blog');
+					FlowRouter.go('/blog');
 				}
 				Session.set('loading', false);
 			});

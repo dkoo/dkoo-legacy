@@ -1,11 +1,4 @@
 <template name="home">
-	{{#if loading}}
-		<div class="loading"></div>
-	{{/if}}
-
-	{{#if modalExists}}
-		{{> modal}}
-	{{/if}}
 	<main class="container {{#if viewingBlog}}blog{{/if}}">
 		<section class="intro">
 			<div>

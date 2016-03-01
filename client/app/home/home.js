@@ -3,9 +3,6 @@ Template.home.onRendered(function() {
 });
 
 Template.home.helpers({
-	modalExists: function() {
-		return Session.get('modal');
-	},
 	viewingBlog: function() {
 		return Session.get('viewingBlog');
 	}
