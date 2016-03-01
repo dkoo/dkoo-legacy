@@ -1,6 +1,15 @@
 Template.post.helpers({
 	editing: function() {
 		return Session.get('editing');
+	},
+	back: function() {
+		var search = Session.get('filter');
+
+		if ( search ) {
+			return '/blog?search=' + encodeURI(search).replace('#', '%23');
+		} else {
+			return '/blog';
+		}
 	}
 });
 

@@ -35,9 +35,8 @@ Template.blog.helpers({
 				console.log(err);
 			}
 		});
-
-		results = Posts.find( filter, options );
 		Session.set('loading', false);
+		results = Posts.find( filter, options );
 		return results.count() ? results : false;
 	},
 	excerpt: function() {
@@ -56,32 +55,6 @@ Template.blog.helpers({
 	},
 	searching: function() {
 		return Session.get('searching');
-	},
-	thisPost: function() {
-		var slug = FlowRouter.getParam('slug') || Session.get('thisPost'),
-			post = Posts.findOne({slug: slug});
-
-		if ( !post ) {
-			Meteor.subscribe('posts', { slug: slug }, {}, '', function(err, response) {
-				if ( err ) {
-					console.log(error);
-				}
-				Session.set('loading', false);
-			});
-			post = Posts.findOne({ slug: slug });
-		}
-
-		if ( !!post ) {
-			Session.set('thisPost', slug);
-			return post;
-		} else if ( FlowRouter.getParam('slug') === 'new') {
-			Session.set('editing', true);
-			return {};
-		} else {
-			if ( !FlowRouter.getQueryParam('search') ) {
-				FlowRouter.go('/blog');
-			}
-		}
 	}
 });
 
