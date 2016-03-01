@@ -36,11 +36,11 @@ Template.projects.helpers({
 			if ( err ) {
 				console.log(err);
 			}
-			Session.set('loading', false);
 		});
 
 		results = Projects.find( { slug: { $not: 'about' } }, { sort: { published: 1 } } );
 
+		Session.set('loading', false);
 		return results.count() ? results : false;
 	},
 	thisProject: function() {
