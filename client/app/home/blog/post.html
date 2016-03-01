@@ -1,0 +1,35 @@
+<!-- full post -->
+<template name="post">
+	{{#if editing}}
+		<a class="back static" href="/blog"><i class="fa fa-angle-double-left"></i></a>
+		{{> edit}}
+	{{else}}
+		<a class="back" href="/blog"><i class="fa fa-angle-double-left"></i></a>
+		<header>
+			<h2>{{#if published}}{{date}}{{/if}}</h2>
+		</header><div>
+			<h1>{{#if private}}<em>Draft:</em> {{/if}}{{title}}</h1>
+
+			{{#if excerpt}}
+				<h3 class="dek">{{excerpt}}</h3>
+			{{/if}}
+
+			<section class="content">
+				{{#markdown}}{{content}}{{/markdown}}
+			</section>
+
+			{{#if tags}}
+				<ul class="tags">
+					{{#each tags}}<li><a href="{{uri this}}">{{this}}</a></li>{{/each}}
+				</ul>
+			{{/if}}
+
+			{{#if currentUser}}
+
+				<h2><strong>Publish Status:</strong> {{status}}</h2>
+				<a href="/edit-post" class="action edit">Edit</a>
+				<a href="/delete-post" class="action delete">Delete</a>
+			{{/if}}
+		</div>
+	{{/if}}
+</template>

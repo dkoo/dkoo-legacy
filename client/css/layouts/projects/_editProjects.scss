@@ -1,0 +1,46 @@
+.project {
+	figure {
+		input {
+			margin-right: 0.5em;
+			width: calc(100% - 1.5em);
+		}
+	}
+	pre,
+	textarea {
+		background-color: transparent;
+		border: none;
+		cursor: text;
+		font-family: inherit;
+		font-size: inherit;
+		line-height: inherit;
+		margin: 0;
+		padding: 0;
+		min-height: 1.25em;
+		white-space: pre-wrap;
+		width: 100%;
+		&:empty:before {
+			content: attr(data-placeholder);
+			cursor: text;
+			color: lightgray;
+		}
+		div {
+			margin: 0;
+			padding: 0;
+		}
+	}
+	h2 {
+		pre {
+			display: inline-block;
+			width: auto;
+		}
+	}
+}
+
+
+// desktop styles
+
+@media #{$large} {
+	.project textarea.content {
+		min-width: 500px;
+	}
+}

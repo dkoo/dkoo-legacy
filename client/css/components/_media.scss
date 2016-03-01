@@ -1,2 +1,5 @@
+$extra-large: 'only screen and ( min-width: 960px )';
 $large: 'only screen and ( min-width: 800px )';
+$medium-large: 'only screen and ( min-width: 800px ) and ( max-width: 959px )';
+$medium: 'only screen and ( min-width: 601px ) and ( max-width: 799px )';
 $small: 'only screen and ( max-width: 799px )';

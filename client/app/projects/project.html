@@ -1,0 +1,18 @@
+<template name="project">
+		<a href="#" class="close">&times;</a>
+		<section>{{#if editingProject}}{{> editProject}}{{else}}<figure>
+		{{#each images}}
+				<img src="{{this}}" alt="">
+		{{/each}}
+			</figure><div>
+				<h1>{{title}}</h1>
+
+				{{#markdown}}{{content}}{{/markdown}}
+				
+				{{#if currentUser}}
+					<h2><strong>Publish Status:</strong> {{status}}</h2>
+					<a href="/edit-project" class="action edit">Edit</a>
+					<a href="/delete-project" class="action delete">Delete</a>
+				{{/if}}
+			</div>{{/if}}</section>
+</template>

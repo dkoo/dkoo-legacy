@@ -11,20 +11,27 @@
 // typography
 @import url('http://fonts.googleapis.com/css?family=Montserrat:400,700');
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700');
-@import url('https://fonts.googleapis.com/css?family=Arvo:400,400italic,700,700italic');
+// @import url('https://fonts.googleapis.com/css?family=Arvo:400,400italic,700,700italic');
+@import url("https://fonts.googleapis.com/css?family=Crimson+Text:400,400italic,700,700italic");
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
 
 
 // helpers
-@import "components/rotate";
+@import "components/_rotate";
 
 
 // main layout styles
-@import "layouts/main";
-@import "layouts/admin";
-@import "layouts/intro";
-@import "layouts/blog/blog";
-@import "layouts/blog/edit";
-@import "layouts/blog/toolbar";
-@import "layouts/blog/search";
-@import "layouts/blog/modal";
+@import "layouts/_main";
+@import "layouts/_admin";
+@import "layouts/_intro";
+
+// blog styles
+@import "layouts/blog/_blog";
+@import "layouts/blog/_edit";
+@import "layouts/blog/_toolbar";
+@import "layouts/blog/_search";
+@import "layouts/blog/_modal";
+
+// projects styles
+@import "layouts/projects/_projects";
+@import "layouts/projects/_editProjects";
