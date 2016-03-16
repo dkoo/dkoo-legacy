@@ -36,8 +36,7 @@ main.projects {
 		}
 		a {
 			display: inline-block;
-			font-size: 14px;
-			font-weight: 400;
+			font-size: 13px;
 			padding: 1em 0;
 			&.logo {
 				color: black;
@@ -47,6 +46,7 @@ main.projects {
 				}
 			}
 			& + a {
+				font-weight: 400;
 				margin-left: 1.5em;
 			}
 		}
