@@ -37,6 +37,7 @@ main.projects {
 		a {
 			display: inline-block;
 			font-size: 14px;
+			font-weight: 400;
 			padding: 1em 0;
 			&.logo {
 				color: black;
@@ -123,6 +124,7 @@ main.projects {
 	-webkit-overflow-scrolling: touch;
 	h1,
 	h2 {
+		font-weight: 400;
 		letter-spacing: 0.025em;
 		text-transform: uppercase;
 	}
